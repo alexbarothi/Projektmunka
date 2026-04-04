@@ -1,4 +1,6 @@
-﻿namespace CritiqlyNexusCore
+﻿using Microsoft.Maui.Platform;
+
+namespace CritiqlyNexusCore
 {
     public partial class MainPage : ContentPage
     {
@@ -9,16 +11,19 @@
             InitializeComponent();
         }
 
-        private void OnCounterClicked(object? sender, EventArgs e)
+        public async void GetMovies(Object sender, EventArgs e)
         {
-            count++;
 
-            if (count == 1)
-                CounterBtn.Text = $"Clicked {count} time";
-            else
-                CounterBtn.Text = $"Clicked {count} times";
+        }
 
-            SemanticScreenReader.Announce(CounterBtn.Text);
+        public async void GetRatings(Object sender, EventArgs e)
+        {
+
+        }
+
+        public async void LogOut(Object sender, EventArgs e)
+        {
+
         }
     }
 }

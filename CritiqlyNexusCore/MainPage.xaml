@@ -3,5 +3,48 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="CritiqlyNexusCore.MainPage"
              Shell.NavBarIsVisible="False">
+    <VerticalStackLayout>
+        <HorizontalStackLayout 
+            VerticalOptions="Fill" 
+            BackgroundColor="#2A2720">
+            <Image 
+                Source='Images/critiqlyNexusCore.png'
+                MaximumHeightRequest="50"
+                Margin="30,30,0,0"
+                VerticalOptions="Center"
+                HorizontalOptions="Center">
+            </Image>
 
+            <Button 
+            Margin="250,20,5,0"
+            Clicked="GetMovies"
+            x:Name="getMoviesBtn"
+            BackgroundColor="#BA521A"
+            Text="FILMEK LEKÉRÉSE"
+            FontFamily="Kimberley"
+            TextColor="White"
+            MinimumWidthRequest="200"/>
+
+            <Button 
+            Margin="5,20,5,0"
+            Clicked="GetRatings"
+            x:Name="getRatingsBtn"
+            BackgroundColor="#BA521A" 
+            Text="ÉRTÉKELÉSEK LEKÉRÉSE"
+            FontFamily="Kimberley"
+            TextColor="White"
+            MinimumWidthRequest="200"/>
+
+            <Button 
+            Margin="40,20,5,0"
+            Clicked="LogOut"
+            x:Name="logOutBtn"
+            BackgroundColor="Red" 
+            Text="KIJELENTKEZÉS"
+            FontFamily="Kimberley"
+            TextColor="White"
+            MinimumWidthRequest="200"/>
+
+        </HorizontalStackLayout>
+    </VerticalStackLayout>
 </ContentPage>
