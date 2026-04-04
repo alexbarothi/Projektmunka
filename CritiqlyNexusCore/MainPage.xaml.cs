@@ -11,6 +11,13 @@ namespace CritiqlyNexusCore
             InitializeComponent();
         }
 
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+
+            welcomeLabel.Text = "Üdv újra, " + AppData.Username + "!";
+        }
+
         public async void GetMovies(Object sender, EventArgs e)
         {
 
