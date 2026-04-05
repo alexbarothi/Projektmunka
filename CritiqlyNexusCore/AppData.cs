@@ -11,6 +11,6 @@ namespace CritiqlyNexusCore
         public static DateTime? DailyLastUpdated { get; set; }
         public static DateTime? TrendingLastUpdated { get; set; }
 
-        public static List<Movie> Movies { get; set; }
+        public static List<Movie> Movies { get; set; } = new List<Movie>();
     }
 }
