@@ -45,58 +45,100 @@ namespace CritiqlyNexusCore
 
         public async void GetMovies()
         {
-            var movies = await GetAsync<Movie>("http://127.0.0.1:8000/api/movies");
+            getMoviesBtn.IsEnabled = false;
+            var movies = await GetAsync<Movie>("http://127.0.0.1:8000/api/movies", "movie");
 
             AppData.Movies.Clear();
 
-            foreach (var movie in movies)
+            if(movies.Count > 0)
             {
-                AppData.Movies.Add(movie);
+                getMoviesBtn.BackgroundColor = Colors.DarkGreen;
+                getMoviesBtn.Text = "FILMEK ✓";
+                //getMoviesBtn.TextColor = Colors.Black;
+
+                foreach (var movie in movies)
+                {
+                    AppData.Movies.Add(movie);
+                }
+
+                FireUp();
             }
 
-            //fireUp();
-            getMoviesBtn.BackgroundColor = Colors.DarkGreen;
-            getMoviesBtn.Text = "FILMEK ✓";
-            //getMoviesBtn.TextColor = Colors.Black;
+
         }
 
         public async void GetRatings()
         {
-            var ratings = await GetAsync<Rating>("http://127.0.0.1:8000/api/ratings");
+            getRatingsBtn.IsEnabled = false;
+            var ratings = await GetAsync<Rating>("http://127.0.0.1:8000/api/ratings", "rating");
 
             AppData.Ratings.Clear();
 
-            foreach (var rating in ratings)
+            if(ratings.Count > 0)
             {
-                AppData.Ratings.Add(rating);
-            }
+                getRatingsBtn.BackgroundColor = Colors.DarkGreen;
+                getRatingsBtn.Text = "ÉRTÉKELÉSEK ✓";
+                //getMoviesBtn.TextColor = Colors.Black;
 
-            //fireUp();
-            getRatingsBtn.BackgroundColor = Colors.DarkGreen;
-            getRatingsBtn.Text = "ÉRTÉKELÉSEK ✓";
-            //getMoviesBtn.TextColor = Colors.Black;
+                foreach (var rating in ratings)
+                {
+                    AppData.Ratings.Add(rating);
+                }
+
+                FireUp();
+            }
         }
 
-        public async Task<List<T>> GetAsync<T>(string url)
+        public async Task<List<T>> GetAsync<T>(string url, string type)
         {
             var client = new HttpClient();
 
-            var response = await client.GetAsync(url);
-
-            if (!response.IsSuccessStatusCode)
-                throw new Exception("API error");
-
-            var json = await response.Content.ReadAsStringAsync();
-
-            var result = JsonSerializer.Deserialize<List<T>>(json, new JsonSerializerOptions
+            try
             {
-                PropertyNameCaseInsensitive = true
-            });
+                var response = await client.GetAsync(url);
 
-            if (result == null)
-                throw new Exception("Deserialization failed");
+                if (!response.IsSuccessStatusCode)
+                {
+                    HandleError(type);
+                    return new List<T>();
+                }
 
-            return result;
+                var json = await response.Content.ReadAsStringAsync();
+
+                var result = JsonSerializer.Deserialize<List<T>>(json, new JsonSerializerOptions
+                {
+                    PropertyNameCaseInsensitive = true
+                });
+
+                if (result == null)
+                {
+                    HandleError(type);
+                    return new List<T>();
+                }
+
+                return result;
+            }
+            catch
+            {
+                HandleError(type);
+                return new List<T>();
+            }
+        }
+
+        private void HandleError(string type)
+        {
+            if (type == "movie")
+            {
+                getMoviesBtn.BackgroundColor = Color.FromRgb(105, 29, 12);
+                getMoviesBtn.Text = "FILMEK ⨯";
+                getMoviesBtn.IsEnabled = true;
+            }
+            else if (type == "rating")
+            {
+                getRatingsBtn.BackgroundColor = Color.FromRgb(105, 29, 12);
+                getRatingsBtn.Text = "ÉRTÉKELÉSEK ⨯";
+                getRatingsBtn.IsEnabled= true;
+            }
         }
 
         public async void FireUp()
@@ -107,11 +149,6 @@ namespace CritiqlyNexusCore
                 TrendingMenuBtn.IsEnabled = true;
                 TrendingMenuBtn.IsEnabled = true;
                 DeleteMenuBtn.IsEnabled = true;
-
-                DailyMenuBtn.BackgroundColor = Color.FromRgb(212, 255, 62);
-                TrendingMenuBtn.BackgroundColor = Color.FromRgb(212, 255, 62);
-                UpdateMenuBtn.BackgroundColor = Color.FromRgb(212, 255, 62);
-                DeleteMenuBtn.BackgroundColor = Color.FromRgb(212, 255, 62);
 
                 DailyMenuBtn.FadeTo(1, 1000);
                 TrendingMenuBtn.FadeTo(1, 1000);
