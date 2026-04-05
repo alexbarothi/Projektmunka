@@ -21,7 +21,7 @@ namespace CritiqlyNexusCore.Models
         public bool IsUpdated { get; set; }
         public bool IsDeleted { get; set; }
 
-        public Movie(
+        /*public Movie(
             int id, 
             int tmdb_id, 
             string title, 
@@ -43,6 +43,6 @@ namespace CritiqlyNexusCore.Models
             this.created_at = created_at;
             this.updated_at = updated_at;
             this.deleted_at = deleted_at;
-        }
+        }*/
     }
 }
