@@ -72,8 +72,8 @@ namespace CritiqlyNexusCore
             }
 
             //fireUp();
-            getMoviesBtn.BackgroundColor = Colors.DarkGreen;
-            getMoviesBtn.Text = "FILMEK ✓";
+            getRatingsBtn.BackgroundColor = Colors.DarkGreen;
+            getRatingsBtn.Text = "ÉRTÉKELÉSEK ✓";
             //getMoviesBtn.TextColor = Colors.Black;
         }
 
@@ -101,7 +101,7 @@ namespace CritiqlyNexusCore
 
         public async void LogOut(Object sender, EventArgs e)
         {
-
+            await Shell.Current.GoToAsync("//LoginPage");
         }
     }
 }
