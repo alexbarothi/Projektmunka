@@ -18,12 +18,12 @@ namespace CritiqlyNexusCore
             welcomeLabel.Text = "Üdv újra, " + AppData.Username + "!";
         }
 
-        public async void GetMovies(Object sender, EventArgs e)
+        public async void GetMovies()
         {
 
         }
 
-        public async void GetRatings(Object sender, EventArgs e)
+        public async void GetRatings()
         {
 
         }

@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
+using Microsoft.Maui.LifecycleEvents;
 
 namespace CritiqlyNexusCore
 {
@@ -8,7 +9,30 @@ namespace CritiqlyNexusCore
         {
             var builder = MauiApp.CreateBuilder();
             builder
-                .UseMauiApp<App>()
+                .UseMauiApp<App>();
+
+                builder.ConfigureLifecycleEvents(events =>
+                {
+#if WINDOWS
+        events.AddWindows(w =>
+        {
+            w.OnWindowCreated(window =>
+            {
+                var hWnd = WinRT.Interop.WindowNative.GetWindowHandle(window);
+                var windowId = Microsoft.UI.Win32Interop.GetWindowIdFromWindow(hWnd);
+                var appWindow = Microsoft.UI.Windowing.AppWindow.GetFromWindowId(windowId);
+
+                appWindow.Resize(new Windows.Graphics.SizeInt32(1200, 800));
+
+                if (appWindow.Presenter is Microsoft.UI.Windowing.OverlappedPresenter presenter)
+                {
+                    presenter.IsResizable = false;
+                    presenter.IsMaximizable = false;
+                }
+            });
+        });
+#endif
+                })
                 .ConfigureFonts(fonts =>
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");

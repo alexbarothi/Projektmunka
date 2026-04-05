@@ -17,21 +17,21 @@
 
             <Button 
             Margin="250,20,5,0"
-            Clicked="GetMovies"
             x:Name="getMoviesBtn"
             BackgroundColor="#BA521A"
-            Text="FILMEK LEKÉRÉSE"
+            Text="FILMEK.."
             FontFamily="Kimberley"
+            FontSize="20"
             TextColor="White"
             MinimumWidthRequest="200"/>
 
             <Button 
             Margin="5,20,5,0"
-            Clicked="GetRatings"
             x:Name="getRatingsBtn"
             BackgroundColor="#BA521A" 
-            Text="ÉRTÉKELÉSEK LEKÉRÉSE"
+            Text="ÉRTÉKELÉSEK.."
             FontFamily="Kimberley"
+            FontSize="20"
             TextColor="White"
             MinimumWidthRequest="200"/>
 
@@ -60,7 +60,7 @@
 
         <Grid
             ColumnDefinitions="Auto,Auto,Auto,Auto"
-            RowDefinitions="20,50,50,50"
+            RowDefinitions="50,50,80,80"
             HorizontalOptions="Center"
             HeightRequest="300"
             RowSpacing="10"
@@ -74,7 +74,7 @@
                 TextColor="#111111"
                 x:Name="selectDailyBtn"
                 Opacity="0.6"
-                FontSize="30"
+                FontSize="40"
                 IsEnabled="False"
                 Grid.Column="0"
                 Grid.ColumnSpan="4"
@@ -121,7 +121,7 @@
                 Grid.Column="3"
                 Grid.ColumnSpan="0"
                 Grid.Row="2"
-                Grid.RowSpan="0"/>
+                Grid.RowSpan="2"/>
 
         </Grid>
         
