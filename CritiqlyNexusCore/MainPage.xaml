@@ -122,8 +122,20 @@
                 Grid.ColumnSpan="0"
                 Grid.Row="2"
                 Grid.RowSpan="2"/>
-
         </Grid>
-        
+
+        <HorizontalStackLayout
+            HorizontalOptions="Fill">
+            <Label
+                x:Name="infoLabel"
+                FontSize="20"
+                FontFamily="Kimberley"
+                TextColor="White"
+                Margin="50,200,0,0"
+                HorizontalOptions="End"
+                Text="CNC VERSION 0.0.0"
+                />
+        </HorizontalStackLayout>
+
     </VerticalStackLayout>
 </ContentPage>
