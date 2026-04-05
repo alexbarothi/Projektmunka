@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using CritiqlyNexusCore.Models;
 
 namespace CritiqlyNexusCore
 {
@@ -9,5 +10,7 @@ namespace CritiqlyNexusCore
         public static string Username { get; set; }
         public static DateTime? DailyLastUpdated { get; set; }
         public static DateTime? TrendingLastUpdated { get; set; }
+
+        public static List<Movie> Movies { get; set; }
     }
 }
