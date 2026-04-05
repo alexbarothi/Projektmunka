@@ -20,6 +20,7 @@ namespace CritiqlyNexusCore
             welcomeLabel.Text = "Üdv újra, " + AppData.Username + "!";
 
             GetMovies();
+            GetRatings();
             GetAdminData();
         }
 
@@ -61,7 +62,19 @@ namespace CritiqlyNexusCore
 
         public async void GetRatings()
         {
+            var ratings = await GetAsync<Rating>("http://127.0.0.1:8000/api/ratings");
 
+            AppData.Ratings.Clear();
+
+            foreach (var rating in ratings)
+            {
+                AppData.Ratings.Add(rating);
+            }
+
+            //fireUp();
+            getMoviesBtn.BackgroundColor = Colors.DarkGreen;
+            getMoviesBtn.Text = "FILMEK ✓";
+            //getMoviesBtn.TextColor = Colors.Black;
         }
 
         public async Task<List<T>> GetAsync<T>(string url)
