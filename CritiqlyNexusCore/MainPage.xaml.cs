@@ -16,6 +16,8 @@ namespace CritiqlyNexusCore
             base.OnAppearing();
 
             welcomeLabel.Text = "Üdv újra, " + AppData.Username + "!";
+
+            GetMovies();
         }
 
         public async void GetMovies()

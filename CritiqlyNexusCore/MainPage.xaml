@@ -69,7 +69,7 @@
             Margin="0,50,0,0">
 
             <Border
-                Stroke="#E7FF85"
+                Stroke="#E7FF78"
                 StrokeThickness="5"
                 Grid.Column="0"
                 Grid.ColumnSpan="4"
@@ -79,18 +79,18 @@
 
                 <Button
                     x:Name="DailyMenuBtn"
-                    BackgroundColor="#9BB53E"
+                    BackgroundColor="#D4FF3E"
                     Text="NAPI FILMEK KIVÁLASZTÁSA"
                     FontFamily="Kimberley"
                     TextColor="#1C1A15"
-                    Opacity="0.6"
+                    Opacity="0.4"
                     FontSize="40"
                     IsEnabled="False"/>
             </Border>
 
 
             <Border
-                Stroke="#E7FF85"
+                Stroke="#E7FF6B"
                 StrokeThickness="5"
                 Grid.Column="0"
                 Grid.ColumnSpan="3"
@@ -99,18 +99,18 @@
 
                 <Button
                     x:Name="TrendingMenuBtn"
-                    BackgroundColor="#9BB53E"
+                    BackgroundColor="#D4FF3E"
                     Text="FELKAPOTT FILMEK FRISSÍTÉSE"
                     FontFamily="Kimberley"
                     TextColor="#111111"
-                    Opacity="0.6"
+                    Opacity="0.4"
                     FontSize="30"
                     IsEnabled="False"/>
             </Border>
 
 
             <Border
-                Stroke="#E7FF85"
+                Stroke="#E7FF6B"
                 StrokeThickness="5"
                 Grid.Column="0"
                 Grid.ColumnSpan="3"
@@ -119,18 +119,18 @@
 
                 <Button
                     x:Name="UpdateMenuBtn"
-                    BackgroundColor="#9BB53E"
+                    BackgroundColor="#D4FF3E"
                     Text="FILMEK SZERKESZTÉSE"
                     FontFamily="Kimberley"
                     TextColor="#111111"
-                    Opacity="0.6"
+                    Opacity="0.4"
                     FontSize="30"
                     IsEnabled="False"/>
             </Border>
 
 
             <Border
-                Stroke="#E7FF85"
+                Stroke="#E7FF6B"
                 StrokeThickness="5"
                 Grid.Column="3"
                 Grid.Row="2"
@@ -139,11 +139,11 @@
 
                 <Button
                     x:Name="DeleteMenuBtn"
-                    BackgroundColor="#9BB53E"
+                    BackgroundColor="#D4FF3E"
                     Text="FILMEK TÖRLÉSE"
                     FontFamily="Kimberley"
                     TextColor="#111111"
-                    Opacity="0.6"
+                    Opacity="0.4"
                     FontSize="30"
                     IsEnabled="False"/>
             </Border>
