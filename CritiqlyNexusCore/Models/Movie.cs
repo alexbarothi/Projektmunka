@@ -18,6 +18,8 @@ namespace CritiqlyNexusCore.Models
         public DateTime? created_at { get; set; }
         public DateTime? updated_at { get; set; }
         public DateTime? deleted_at { get; set; }
+        public bool isSelectedDaily { get; set; }
+        public bool isSelectedTrending { get; set; }
         public bool IsUpdated { get; set; }
         public bool IsDeleted { get; set; }
 
