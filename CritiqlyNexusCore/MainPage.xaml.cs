@@ -99,6 +99,27 @@ namespace CritiqlyNexusCore
             return result;
         }
 
+        public async void FireUp()
+        {
+            if (AppData.Movies.Count > 0 && AppData.Ratings.Count > 0)
+            {
+                DailyMenuBtn.IsEnabled = true;
+                TrendingMenuBtn.IsEnabled = true;
+                TrendingMenuBtn.IsEnabled = true;
+                DeleteMenuBtn.IsEnabled = true;
+
+                DailyMenuBtn.BackgroundColor = Color.FromRgb(212, 255, 62);
+                TrendingMenuBtn.BackgroundColor = Color.FromRgb(212, 255, 62);
+                UpdateMenuBtn.BackgroundColor = Color.FromRgb(212, 255, 62);
+                DeleteMenuBtn.BackgroundColor = Color.FromRgb(212, 255, 62);
+
+                DailyMenuBtn.FadeTo(1, 1000);
+                TrendingMenuBtn.FadeTo(1, 1000);
+                UpdateMenuBtn.FadeTo(1, 1000);
+                DeleteMenuBtn.FadeTo(1, 1000);
+            }
+        }
+
         public async void LogOut(Object sender, EventArgs e)
         {
             await Shell.Current.GoToAsync("//LoginPage");
