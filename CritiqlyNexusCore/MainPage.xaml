@@ -57,6 +57,73 @@
                 Margin="50,30,0,0"
                 />
         </HorizontalStackLayout>
+
+        <Grid
+            ColumnDefinitions="Auto,Auto,Auto,Auto"
+            RowDefinitions="20,50,50,50"
+            HorizontalOptions="Center"
+            HeightRequest="300"
+            RowSpacing="10"
+            ColumnSpacing="10"
+            Margin="0,50,0,0">
+
+            <Button 
+                BackgroundColor="#9BB53E"
+                Text="NAPI FILMEK KIVÁLASZTÁSA"
+                FontFamily="Kimberley"
+                TextColor="#111111"
+                x:Name="selectDailyBtn"
+                Opacity="0.6"
+                FontSize="30"
+                IsEnabled="False"
+                Grid.Column="0"
+                Grid.ColumnSpan="4"
+                Grid.Row="0"
+                Grid.RowSpan="2"/>
+
+            <Button 
+                BackgroundColor="#9BB53E"
+                Text="FELKAPOTT FILMEK FRISSÍTÉSE"
+                FontFamily="Kimberley"
+                TextColor="#111111"
+                x:Name="updateTrendingBtn"
+                Opacity="0.6"
+                FontSize="30"
+                IsEnabled="False"
+                Grid.Column="0"
+                Grid.ColumnSpan="3"
+                Grid.Row="2"
+                Grid.RowSpan="0"/>
+
+            <Button 
+                BackgroundColor="#9BB53E"
+                Text="FILMEK SZERKESZTÉSE"
+                FontFamily="Kimberley"
+                TextColor="#111111"
+                x:Name="updateMoviesBtn"
+                Opacity="0.6"
+                FontSize="30"
+                IsEnabled="False"
+                Grid.Column="0"
+                Grid.ColumnSpan="3"
+                Grid.Row="3"
+                Grid.RowSpan="0"/>
+
+            <Button
+                BackgroundColor="#9BB53E"
+                Text="FILMEK TÖRLÉSE"
+                FontFamily="Kimberley"
+                TextColor="#111111"
+                x:Name="deleteMoviesBtn"
+                Opacity="0.6"
+                FontSize="30"
+                IsEnabled="False"
+                Grid.Column="3"
+                Grid.ColumnSpan="0"
+                Grid.Row="2"
+                Grid.RowSpan="0"/>
+
+        </Grid>
         
     </VerticalStackLayout>
 </ContentPage>
