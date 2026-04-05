@@ -157,6 +157,26 @@ namespace CritiqlyNexusCore
             }
         }
 
+        public async void OpenDailyPage(Object sender, EventArgs e)
+        {
+
+        }
+
+        public async void OpenTrendingPage(Object sender, EventArgs e)
+        {
+
+        }
+
+        public async void OpenUpdatePage(Object sender, EventArgs e)
+        {
+
+        }
+
+        public async void OpenDeletePage(Object sender, EventArgs e)
+        {
+
+        }
+
         public async void LogOut(Object sender, EventArgs e)
         {
             await Shell.Current.GoToAsync("//LoginPage");

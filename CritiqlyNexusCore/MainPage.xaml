@@ -80,6 +80,7 @@
                 StrokeShape="RoundRectangle 15">
 
                 <Button
+                    Clicked="OpenDailyPage"
                     x:Name="DailyMenuBtn"
                     BackgroundColor="#D4FF3E"
                     Text="NAPI FILMEK KIVÁLASZTÁSA"
@@ -100,6 +101,7 @@
                 StrokeShape="RoundRectangle 15">
 
                 <Button
+                    Clicked="OpenTrendingPage"
                     x:Name="TrendingMenuBtn"
                     BackgroundColor="#D4FF3E"
                     Text="FELKAPOTT FILMEK FRISSÍTÉSE"
@@ -120,6 +122,7 @@
                 StrokeShape="RoundRectangle 15">
 
                 <Button
+                    Clicked="OpenUpdatePage"
                     x:Name="UpdateMenuBtn"
                     BackgroundColor="#D4FF3E"
                     Text="FILMEK SZERKESZTÉSE"
@@ -140,6 +143,7 @@
                 StrokeShape="RoundRectangle 15">
 
                 <Button
+                    Clicked="OpenDeletePage"
                     x:Name="DeleteMenuBtn"
                     BackgroundColor="#D4FF3E"
                     Text="FILMEK TÖRLÉSE"
