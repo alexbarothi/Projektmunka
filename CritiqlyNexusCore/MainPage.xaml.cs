@@ -159,7 +159,7 @@ namespace CritiqlyNexusCore
 
         public async void OpenDailyPage(Object sender, EventArgs e)
         {
-
+            await Shell.Current.GoToAsync("//DailyPage");
         }
 
         public async void OpenTrendingPage(Object sender, EventArgs e)
