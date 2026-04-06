@@ -4,9 +4,176 @@
              x:Class="CritiqlyNexusCore.DailyPage"
              Title="DailyPage">
     <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+        <HorizontalStackLayout 
+            VerticalOptions="Fill" 
+            BackgroundColor="#2A2720">
+            <Image 
+                Source='Images/critiqlyNexusCore.png'
+                MaximumHeightRequest="50"
+                Margin="30,30,0,0"
+                VerticalOptions="Center"
+                HorizontalOptions="Center">
+            </Image>
+            <Button 
+            Margin="500,20,5,0"
+            Clicked="Exit"
+            x:Name="exitBtn"
+            BackgroundColor="OrangeRed" 
+            Text="KILÉPÉS"
+            FontFamily="Kimberley"
+            TextColor="White"
+            MinimumWidthRequest="200"/>
+
+            <Button 
+            Margin="5,20,5,0"
+            Clicked="Save"
+            x:Name="SaveBtn"
+            BackgroundColor="Red" 
+            Text="MENTÉS"
+            FontFamily="Kimberley"
+            TextColor="White"
+            MinimumWidthRequest="200"/>
+        </HorizontalStackLayout>
+
+        <HorizontalStackLayout
+            BackgroundColor="#2A2720"
+            Padding="0,0,0,0">
+            <Label
+                x:Name="StatusLabel"
+                FontSize="25"
+                FontFamily="Kimberley"
+                TextColor="White"
+                Margin="50,30,0,0"
+                />
+        </HorizontalStackLayout>
+
+        <HorizontalStackLayout
+            VerticalOptions="Fill" 
+            BackgroundColor="#2A2720">
+
+            <DatePicker
+                x:Name="dateSelector"
+                FontFamily="Kimberley"
+                TextColor="Black"
+                FontSize="20"
+                BackgroundColor="#D4FF3E"
+                Margin="20,30,0,20"
+                DateSelected="LoadDailys"
+                >
+
+            </DatePicker>
+
+            <Border 
+                BackgroundColor="#F5F5F5"
+                Stroke="#D4FF3E"
+                StrokeThickness="3"
+                StrokeShape="RoundRectangle 12"
+                Margin="15,30,0,20"
+                MinimumWidthRequest="250">
+
+                <Entry 
+                    Placeholder="Keresés..?"
+                    FontFamily="Kimberley"
+                    TextColor="White"
+                    PlaceholderColor="#828282"
+                    BackgroundColor="#1C1A15"
+                    VerticalTextAlignment="Center"
+                    HorizontalTextAlignment="Start"
+                    x:Name="EntryQuery"
+                    />
+            </Border>
+
+            <Button
+                Text="⌕ Keresés"
+                Clicked="SearchQuery"
+                x:Name="searchQueryBtn"
+                FontFamily="Kimberley"
+                FontSize="20"
+                BackgroundColor="#D4FF3E"
+                Margin="15,30,0,20">
+
+            </Button>
+
+            <Button
+                Text="🍀 Sorsolás"
+                Clicked="RollRandom"
+                x:Name="rollRandomBtn"
+                FontFamily="Kimberley"
+                FontSize="20"
+                BackgroundColor="#D4FF3E"
+                Margin="15,30,0,20">
+
+            </Button>
+
+            <Button
+                Text="☑ Kiválasztottak Megtekintése"
+                Clicked="checkSelected"
+                x:Name="checkSelectedBtn"
+                FontFamily="Kimberley"
+                FontSize="20"
+                BackgroundColor="#D4FF3E"
+                Margin="15,30,0,20">
+
+            </Button>
+
+        </HorizontalStackLayout>
+        <CollectionView 
+            ItemsSource="{Binding QueryMovies}"
+            SelectionMode="Single"
+            HorizontalScrollBarVisibility="Always"
+            HeightRequest="500"
+            Margin="15"
+            >
+
+            <CollectionView.ItemsLayout>
+                <GridItemsLayout Orientation="Vertical" Span="4" VerticalItemSpacing="10"/>
+            </CollectionView.ItemsLayout>
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Border 
+                        BackgroundColor="#F5F5F5"
+                        Stroke="#D4FF3E"
+                        StrokeThickness="5"
+                        StrokeShape="RoundRectangle 10"
+                        WidthRequest="250"
+                        MaximumHeightRequest="550"
+                        >
+                        <Grid 
+                            RowDefinitions="Auto,*,Auto"
+                            BackgroundColor="#1C1A15"
+                            >
+                            <Image
+                                Source="{Binding fullPosterUrl}"
+                                WidthRequest="250"
+                                Grid.Row="0"/>
+
+                            <Label 
+                                    Text="{Binding title}"
+                                    TextColor="White"
+                                    Padding="10"
+                                    FontFamily="Kimberley"
+                                    FontSize="15"
+                                    MaxLines="2"
+                                    HorizontalOptions="Center"
+                                    MinimumHeightRequest="50"
+                                    Grid.Row="1"/>
+
+                            <Button 
+                                Text="KITŰZÉS NAPILISTÁRA"
+                                FontFamily="Kimberley"
+                                FontSize="20"
+                                CornerRadius="0"
+                                Clicked="AddToDailyList"
+                                TextColor="Black"
+                                BackgroundColor="#D4FF3E"
+                                Grid.Row="2"
+                                MinimumHeightRequest="50"
+                                CommandParameter="{Binding id}"/>
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
     </VerticalStackLayout>
 </ContentPage>
