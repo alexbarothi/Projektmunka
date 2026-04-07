@@ -42,7 +42,25 @@ public partial class DailyPage : ContentPage
 
     public async void getDailys()
     {
+        DailyMovies.Clear();
+        var client = new HttpClient();
 
+        var response = await client.GetAsync("http://localhost:8000/api/get-daily");
+
+        if (!response.IsSuccessStatusCode)
+            throw new Exception("API error");
+
+        var json = await response.Content.ReadAsStringAsync();
+
+        var result = JsonSerializer.Deserialize<List<DailyMovie>>(json, new JsonSerializerOptions
+        {
+            PropertyNameCaseInsensitive = true
+        });
+
+        foreach (var dailymovie in result)
+        {
+            DailyMovies.Add(dailymovie);
+        }
     }
 
     public async void LoadDailys(object sender, DateChangedEventArgs e)
