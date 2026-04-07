@@ -18,7 +18,7 @@ public partial class DailyPage : ContentPage
 
         EntryQuery.Text = "";
     }
-    protected override void OnAppearing()
+    protected override async void OnAppearing()
     {
         base.OnAppearing();
 
@@ -29,11 +29,12 @@ public partial class DailyPage : ContentPage
         QueryMovies.Clear();
 
         DateTime min = DateTime.Today;
-        dateSelector.Date = min.Date;
+        dateSelector.Date = new DateTime(min.Year, min.Month, min.Day, 0, 0, 0);
         dateSelector.MinimumDate = new DateTime(min.Year, min.Month, min.Day);
         dateSelector.MaximumDate = new DateTime(min.Year + 1, min.Month, min.Day);
 
-        getDailys();
+        await getDailys();
+        LoadDailys(this, new DateChangedEventArgs(min, min));
     }
 
     public async void SearchQuery(Object sender, EventArgs e)
@@ -63,7 +64,9 @@ public partial class DailyPage : ContentPage
             Random rnd = new Random();
             for (int i = 0; i < currentNum; i++)
             {
-                CurrentDayIds.Add(rnd.Next(1, (AppData.Movies.Count + 1)));
+                int id = rnd.Next(1, AppData.Movies.Count + 1);
+                CurrentDayIds.Add(id);
+                AppData.Movies.First(x => x.id == id).isSelectedDaily = true;
                 await Task.Delay(500);
                 rollRandomBtn.BackgroundColor = Color.FromRgb(212, 255, 62);
             }
@@ -93,7 +96,7 @@ public partial class DailyPage : ContentPage
             CurrentDayIds.Remove((Int32)id);
             AppData.Movies.First(x => x.id == (Int32)id).isSelectedDaily = false;
             await Task.Delay(500);
-            Button.BackgroundColor = Color.FromRgb(212, 255, 62);
+            Button.BackgroundColor = Colors.Orange;
             checkSelected(this, EventArgs.Empty);
         }
         else
@@ -118,7 +121,7 @@ public partial class DailyPage : ContentPage
         checkSelectedBtn.BackgroundColor = Color.FromRgb(212, 255, 62);
     }
 
-    public async void getDailys()
+    public async Task getDailys()
     {
         DailyMovies.Clear();
         var client = new HttpClient();
@@ -143,6 +146,11 @@ public partial class DailyPage : ContentPage
 
     public async void LoadDailys(object sender, DateChangedEventArgs e)
     {
+        foreach (var movie in AppData.Movies)
+        {
+            movie.isSelectedDaily = false;
+        }
+
         CurrentDayIds.Clear();
         foreach (var daily in DailyMovies)
         {
@@ -202,6 +210,7 @@ public partial class DailyPage : ContentPage
             if (responseDate.IsSuccessStatusCode && responseDaily.IsSuccessStatusCode)
             {
                 //await Shell.Current.GoToAsync($"//MainPage");
+                AppData.DailyLastUpdated = DateTime.Now;
                 await DisplayAlertAsync("INFO", "A mentés sikeres!", "OK");
                 getDailys();
                 StatusLabel.Text = "Utolsó frissítés: " + AppData.DailyLastUpdated?.ToString("yyyy.MM.dd HH:mm") ?? "N/I";
