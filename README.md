@@ -4,7 +4,7 @@ An Admin Interface for Critiqly website
 
 
 
-### **>Version: CNC 0.2.0**
+#### **>Version: CNC 0.2.0**
 
 
 
@@ -14,13 +14,13 @@ Description:
 
 
 
-Through a streamlined and user-friendly interface, admins can:
+#### Through a streamlined and user-friendly interface, admins can:
 
 
 
-* Select and update daily featured movies
-* Control trending movie listings
-* Manage the full movie catalog, including update and delete functionality
+* ###### Select and update daily featured movies
+* ###### Control trending movie listings
+* ###### Manage the full movie catalog, including update and delete functionality
 
 
 
@@ -32,5 +32,5 @@ The system is built to simplify content management and ensure that the platform 
 
 
 
-\->DailyPage: The "last changed" status only updates after a page reload.
+###### \->DailyPage: The "last changed" status only updates after a page reload.
 
