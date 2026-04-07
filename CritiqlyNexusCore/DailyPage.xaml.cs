@@ -21,6 +21,19 @@ public partial class DailyPage : ContentPage
     protected override void OnAppearing()
     {
         base.OnAppearing();
+
+        EntryQuery.Text = "";
+        StatusLabel.Text = "Utolsó frissítés: " + AppData.DailyLastUpdated?.ToString("yyyy.MM.dd HH:mm") ?? "N/I";
+
+        CurrentDayIds.Clear();
+        QueryMovies.Clear();
+
+        DateTime min = DateTime.Today;
+        dateSelector.Date = min.Date;
+        dateSelector.MinimumDate = new DateTime(min.Year, min.Month, min.Day);
+        dateSelector.MaximumDate = new DateTime(min.Year + 1, min.Month, min.Day);
+
+        getDailys();
     }
 
     public async void SearchQuery(Object sender, EventArgs e)
@@ -70,6 +83,7 @@ public partial class DailyPage : ContentPage
         {
             Button.BackgroundColor = Colors.Orange;
             CurrentDayIds.Add((Int32)id);
+            AppData.Movies.First(x => x.id == (Int32)id).isSelectedDaily = true;
             await Task.Delay(500);
             Button.BackgroundColor = Color.FromRgb(212, 255, 62);
         }
@@ -77,6 +91,7 @@ public partial class DailyPage : ContentPage
         {
             Button.BackgroundColor = Colors.Red;
             CurrentDayIds.Remove((Int32)id);
+            AppData.Movies.First(x => x.id == (Int32)id).isSelectedDaily = false;
             await Task.Delay(500);
             Button.BackgroundColor = Color.FromRgb(212, 255, 62);
             checkSelected(this, EventArgs.Empty);
@@ -134,6 +149,7 @@ public partial class DailyPage : ContentPage
             if (daily.date?.Date == dateSelector.Date?.Date)
             {
                 CurrentDayIds.Add(daily.movie_id);
+                AppData.Movies.First(x => x.id == (Int32)daily.movie_id).isSelectedDaily = true;
             }
         }
         checkSelected(this, EventArgs.Empty);
