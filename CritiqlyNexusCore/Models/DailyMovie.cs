@@ -1,0 +1,15 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace CritiqlyNexusCore.Models
+{
+    public class DailyMovie
+    {
+        public int id { get; set; }
+        public int movie_id { get; set; }
+        public DateTime? date { get; set; }
+        public DateTime? created_at { get; set; }
+        public DateTime? updated_at { get; set; }
+    }
+}
