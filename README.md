@@ -8,9 +8,9 @@ An Admin Interface for Critiqly website
 
 
 
-Description:
+#### Description:
 
-###### The Critiqly Nexus Core is an administrative interface designed for managing the Critiqly platform’s movie-related content. It allows administrators to efficiently handle daily featured movies, trending selections, and the overall movie database.
+##### The Critiqly Nexus Core is an administrative interface designed for managing the Critiqly platform’s movie-related content. It allows administrators to efficiently handle daily featured movies, trending selections, and the overall movie database.
 
 
 
@@ -18,13 +18,15 @@ Description:
 
 
 
-* ###### Select and update daily featured movies
-* ###### Control trending movie listings
-* ###### Manage the full movie catalog, including update and delete functionality
+##### \->Select and update daily featured movies
+
+##### \->Control trending movie listings
+
+##### \->Manage the full movie catalog, including update and delete functionality
 
 
 
-The system is built to simplify content management and ensure that the platform stays up-to-date with minimal effort.
+###### The system is built to simplify content management and ensure that the platform stays up-to-date with minimal effort.
 
 
 
@@ -32,5 +34,5 @@ The system is built to simplify content management and ensure that the platform 
 
 
 
-###### \->DailyPage: The "last changed" status only updates after a page reload.
+##### \->DailyPage: The "last changed" status only updates after a page reload.
 
