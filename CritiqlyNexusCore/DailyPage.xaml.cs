@@ -86,7 +86,18 @@ public partial class DailyPage : ContentPage
 
     public async void checkSelected(Object sender, EventArgs e)
     {
+        QueryMovies.Clear();
+        checkSelectedBtn.BackgroundColor = Colors.Orange;
 
+        foreach (var movie in AppData.Movies)
+        {
+            if (CurrentDayIds.Contains(movie.id))
+            {
+                QueryMovies.Add(movie);
+            }
+        }
+        await Task.Delay(500);
+        checkSelectedBtn.BackgroundColor = Color.FromRgb(212, 255, 62);
     }
 
     public async void getDailys()
@@ -114,7 +125,15 @@ public partial class DailyPage : ContentPage
 
     public async void LoadDailys(object sender, DateChangedEventArgs e)
     {
-
+        CurrentDayIds.Clear();
+        foreach (var daily in DailyMovies)
+        {
+            if (daily.date?.Date == dateSelector.Date?.Date)
+            {
+                CurrentDayIds.Add(daily.movie_id);
+            }
+        }
+        checkSelected(this, EventArgs.Empty);
     }
     public async void Exit(Object sender, EventArgs e)
     {
