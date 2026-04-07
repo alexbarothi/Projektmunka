@@ -1,4 +1,5 @@
 using System.Collections.ObjectModel;
+using System.Text;
 using System.Text.Json;
 using CritiqlyNexusCore.Models;
 
@@ -14,6 +15,8 @@ public partial class DailyPage : ContentPage
     {
         InitializeComponent();
         BindingContext = this;
+
+        EntryQuery.Text = "";
     }
     protected override void OnAppearing()
     {
@@ -137,11 +140,64 @@ public partial class DailyPage : ContentPage
     }
     public async void Exit(Object sender, EventArgs e)
     {
+        var isResponseOk = await DisplayAlertAsync(
+            "Kilépés",
+            "Biztosan ki akarsz lépni? A nem mentett változások elvesznek!",
+            "Igen",
+            "Mégse"
+        );
 
+        if (isResponseOk)
+        {
+            await Shell.Current.GoToAsync("//MainPage");
+        }
+        else
+        {
+            return;
+        }
     }
 
     public async void Save(Object sender, EventArgs e)
     {
+        if (CurrentDayIds.Count > 2)
+        {
+            var client = new HttpClient();
 
+            var dailyData = new
+            {
+                movies = CurrentDayIds.ToArray(),
+                date = dateSelector.Date
+            };
+            var dailyJson = JsonSerializer.Serialize(dailyData);
+            var httpDailyData = new StringContent(dailyJson, Encoding.UTF8, "application/json");
+
+            var responseDaily = await client.PostAsync("http://localhost:8000/api/daily-movies", httpDailyData);
+
+            var dateData = new
+            {
+                daily = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:sszzz"),
+                trending = AppData.TrendingLastUpdated.Value.ToString("yyyy-MM-ddTHH:mm:sszzz")
+            };
+            var dateJson = JsonSerializer.Serialize(dateData);
+            var httpDateDate = new StringContent(dateJson, Encoding.UTF8, "application/json");
+            //await DisplayAlertAsync("json", json, "OK");
+            var responseDate = await client.PostAsync("http://localhost:8000/api/admin/update", httpDateDate);
+
+            if (responseDate.IsSuccessStatusCode && responseDaily.IsSuccessStatusCode)
+            {
+                //await Shell.Current.GoToAsync($"//MainPage");
+                await DisplayAlertAsync("INFO", "A mentés sikeres!", "OK");
+                getDailys();
+                StatusLabel.Text = "Utolsó frissítés: " + AppData.DailyLastUpdated?.ToString("yyyy.MM.dd HH:mm") ?? "N/I";
+            }
+            else
+            {
+                await DisplayAlertAsync("Hiba", "A mentés nem sikerült! \n Próbáld újra!", "OK");
+            }
+        }
+        else
+        {
+            await DisplayAlertAsync("HIBA", "A feltölteni kívánt filmek száma nem elegendő!", "OK");
+        }
     }
 }
