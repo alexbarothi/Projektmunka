@@ -60,7 +60,28 @@ public partial class DailyPage : ContentPage
 
     public async void AddToDailyList(Object sender, EventArgs e)
     {
+        var Button = sender as Button;
+        var id = Button?.CommandParameter;
 
+        if (CurrentDayIds.Count != 15 && !CurrentDayIds.Contains((Int32)id))
+        {
+            Button.BackgroundColor = Colors.Orange;
+            CurrentDayIds.Add((Int32)id);
+            await Task.Delay(500);
+            Button.BackgroundColor = Color.FromRgb(212, 255, 62);
+        }
+        else if (CurrentDayIds.Contains((Int32)id))
+        {
+            Button.BackgroundColor = Colors.Red;
+            CurrentDayIds.Remove((Int32)id);
+            await Task.Delay(500);
+            Button.BackgroundColor = Color.FromRgb(212, 255, 62);
+            checkSelected(this, EventArgs.Empty);
+        }
+        else
+        {
+            await DisplayAlertAsync("INFO", "Elérted a maximálisan hozzáadható filmek számát!", "OK");
+        }
     }
 
     public async void checkSelected(Object sender, EventArgs e)
