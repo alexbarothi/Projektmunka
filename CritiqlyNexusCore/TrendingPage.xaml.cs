@@ -1,4 +1,5 @@
 using System.Collections.ObjectModel;
+using System.Text;
 using System.Text.Json;
 using CritiqlyNexusCore.Models;
 
@@ -127,6 +128,43 @@ public partial class TrendingPage : ContentPage
 
     public async void Save(Object sender, EventArgs e)
     {
+        if (SelectedIds.Count > 2)
+        {
+            var client = new HttpClient();
 
+            var trendingData = new
+            {
+                movies = SelectedIds.ToArray(),
+            };
+            var trendingJson = JsonSerializer.Serialize(trendingData);
+            var httpTrendingData = new StringContent(trendingJson, Encoding.UTF8, "application/json");
+
+            var responseDaily = await client.PostAsync("http://localhost:8000/api/trending-movies", httpTrendingData);
+
+            var dateData = new
+            {
+                daily = AppData.DailyLastUpdated.Value.ToString("yyyy-MM-ddTHH:mm:sszzz"),
+                trending = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:sszzz")
+            };
+            var dateJson = JsonSerializer.Serialize(dateData);
+            var httpDateDate = new StringContent(dateJson, Encoding.UTF8, "application/json");
+            //await DisplayAlertAsync("json", json, "OK");
+            var responseDate = await client.PostAsync("http://localhost:8000/api/admin/update", httpDateDate);
+
+            if (responseDate.IsSuccessStatusCode && responseDaily.IsSuccessStatusCode)
+            {
+                AppData.TrendingLastUpdated = DateTime.Now;
+                StatusLabel.Text = "Utolsó frissítés: " + AppData.TrendingLastUpdated?.ToString("yyyy.MM.dd HH:mm") ?? "N/I";
+                await Shell.Current.GoToAsync($"//MainPage");
+            }
+            else
+            {
+                await DisplayAlertAsync("Hiba", "A mentés nem sikerült! \n Próbáld újra!", "OK");
+            }
+        }
+        else
+        {
+            await DisplayAlertAsync("HIBA", "A feltölteni kívánt filmek száma nem elegendő!", "OK");
+        }
     }
 }
