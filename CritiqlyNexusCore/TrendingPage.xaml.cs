@@ -67,6 +67,7 @@ public partial class TrendingPage : ContentPage
         for (int i = 0; i < top4.Length; i++)
         {
             SelectedIds.Add(top4[i]);
+            AppData.Movies.First(x => x.id == top4[i]).isSelectedTrending = true;
         }
 
         checkSelected(this, EventArgs.Empty);
@@ -80,6 +81,7 @@ public partial class TrendingPage : ContentPage
         {
             Button.BackgroundColor = Colors.Orange;
             SelectedIds.Add((Int32)id);
+            AppData.Movies.First(x => x.id == (Int32)id).isSelectedTrending = true;
             await Task.Delay(500);
             Button.BackgroundColor = Color.FromRgb(212, 255, 62);
         }
@@ -87,6 +89,7 @@ public partial class TrendingPage : ContentPage
         {
             Button.BackgroundColor = Colors.Red;
             SelectedIds.Remove((Int32)id);
+            AppData.Movies.First(x => x.id == (Int32)id).isSelectedTrending = false;
             await Task.Delay(500);
             Button.BackgroundColor = Colors.Orange;
             checkSelected(this, EventArgs.Empty);

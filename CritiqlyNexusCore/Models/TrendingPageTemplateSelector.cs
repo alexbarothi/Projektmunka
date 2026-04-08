@@ -13,7 +13,7 @@ namespace CritiqlyNexusCore.Models
         {
             var movie = item as Movie;
 
-            if (movie.isSelectedDaily)
+            if (movie.isSelectedTrending)
                 return SelectedTemplate;
 
             return NormalTemplate;
