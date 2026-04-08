@@ -2,11 +2,117 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="CritiqlyNexusCore.TrendingPage"
+             xmlns:local="clr-namespace:CritiqlyNexusCore.Models"
              Title="TrendingPage">
+    <ContentPage.Resources>
+        <DataTemplate x:Key="NormalTemplate">
+            <Border 
+                BackgroundColor="#F5F5F5"
+                Stroke="#D4FF3E"
+                StrokeThickness="5"
+                StrokeShape="RoundRectangle 10"
+                WidthRequest="250"
+                MaximumHeightRequest="550"
+                        >
+                <Grid 
+                    RowDefinitions="Auto,*,Auto"
+                    BackgroundColor="#1C1A15"
+                    >
+                    <Image
+                        Source="{Binding fullPosterUrl}"
+                        WidthRequest="250"
+                        Grid.Row="0"/>
+
+                    <Label 
+                        Text="{Binding title}"
+                        TextColor="White"
+                        Padding="10"
+                        FontFamily="Kimberley"
+                        FontSize="15"
+                        MaxLines="2"
+                        HorizontalOptions="Center"
+                        MinimumHeightRequest="50"
+                        Grid.Row="1"/>
+
+                    <Button 
+                        Text="KITŰZÉS TRENDINGLISTÁRA"
+                        FontFamily="Kimberley"
+                        FontSize="20"
+                        CornerRadius="0"
+                        Clicked="AddToTrendingList"
+                        TextColor="Black"
+                        BackgroundColor="#D4FF3E"
+                        Grid.Row="2"
+                        MinimumHeightRequest="50"
+                        CommandParameter="{Binding id}"/>
+                </Grid>
+            </Border>
+        </DataTemplate>
+
+
+        <DataTemplate x:Key="SelectedTemplate">
+            <Border 
+                BackgroundColor="#F5F5F5"
+                Stroke="#FF8200"
+                StrokeThickness="5"
+                StrokeShape="RoundRectangle 10"
+                WidthRequest="250"
+                MaximumHeightRequest="550"
+                        >
+                <Grid 
+                    RowDefinitions="Auto,*,Auto"
+                    BackgroundColor="#1C1A15"
+                    >
+                    <Image
+                        Source="{Binding fullPosterUrl}"
+                        WidthRequest="250"
+                        Grid.Row="0"/>
+
+                    <Label 
+                        Text="{Binding title}"
+                        TextColor="White"
+                        Padding="10"
+                        FontFamily="Kimberley"
+                        FontSize="15"
+                        MaxLines="2"
+                        HorizontalOptions="Center"
+                        MinimumHeightRequest="50"
+                        Grid.Row="1"/>
+
+                    <Button 
+                        Text="ELTÁVOLÍTÁS"
+                        FontFamily="Kimberley"
+                        FontSize="20"
+                        CornerRadius="0"
+                        Clicked="AddToDailyList"
+                        TextColor="Black"
+                        BackgroundColor="Orange"
+                        Grid.Row="2"
+                        MinimumHeightRequest="50"
+                        CommandParameter="{Binding id}"/>
+                </Grid>
+            </Border>
+        </DataTemplate>
+
+        <local:TrendingPageTemplateSelector
+                x:Key="TrendingPageTemplateSelector"
+                NormalTemplate="{StaticResource NormalTemplate}"
+                SelectedTemplate="{StaticResource SelectedTemplate}" />
+    </ContentPage.Resources>
+
+
     <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+        <CollectionView 
+            ItemsSource="{Binding QueryMovies}"
+            ItemTemplate="{StaticResource TrendingPageTemplateSelector}" 
+            SelectionMode="Single"
+            HorizontalScrollBarVisibility="Always"
+            HeightRequest="500"
+            Margin="15">
+
+            <CollectionView.ItemsLayout>
+                <GridItemsLayout Orientation="Vertical" Span="4" VerticalItemSpacing="10"/>
+            </CollectionView.ItemsLayout>
+        </CollectionView>
     </VerticalStackLayout>
 </ContentPage>
