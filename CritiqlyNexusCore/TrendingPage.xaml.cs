@@ -66,7 +66,28 @@ public partial class TrendingPage : ContentPage
     }
     public async void AddToTrendingList(Object sender, EventArgs e)
     {
+        var Button = sender as Button;
+        var id = Button?.CommandParameter;
 
+        if (SelectedIds.Count != 4 && !SelectedIds.Contains((Int32)id))
+        {
+            Button.BackgroundColor = Colors.Orange;
+            SelectedIds.Add((Int32)id);
+            await Task.Delay(500);
+            Button.BackgroundColor = Color.FromRgb(212, 255, 62);
+        }
+        else if (SelectedIds.Contains((Int32)id))
+        {
+            Button.BackgroundColor = Colors.Red;
+            SelectedIds.Remove((Int32)id);
+            await Task.Delay(500);
+            Button.BackgroundColor = Colors.Orange;
+            checkSelected(this, EventArgs.Empty);
+        }
+        else
+        {
+            await DisplayAlertAsync("INFO", "Elérted a maximálisan hozzáadható filmek számát!", "OK");
+        }
     }
 
     public async void checkSelected(Object sender, EventArgs e)
