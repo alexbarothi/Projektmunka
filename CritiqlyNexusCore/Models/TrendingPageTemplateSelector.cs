@@ -4,7 +4,7 @@ using System.Text;
 
 namespace CritiqlyNexusCore.Models
 {
-    public class DailyPageTemplateSelector : DataTemplateSelector
+    public class TrendingPageTemplateSelector : DataTemplateSelector
     {
         public DataTemplate NormalTemplate { get; set; }
         public DataTemplate SelectedTemplate { get; set; }

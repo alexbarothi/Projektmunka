@@ -4,7 +4,7 @@ An Admin Interface for the Critiqly website
 
 
 
-#### **>Version: CNC 0.2.2**
+#### **>Version: CNC 0.3.0**
 
 
 
@@ -18,7 +18,7 @@ An Admin Interface for the Critiqly website
 
 
 
-###### \->Select and update daily featured movies
+###### \->Select and update daily featured movies, up to one year ahead.
 
 ###### \->Control trending movie listings
 

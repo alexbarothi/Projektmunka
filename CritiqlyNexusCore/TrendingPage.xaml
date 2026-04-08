@@ -85,7 +85,7 @@
                         FontFamily="Kimberley"
                         FontSize="20"
                         CornerRadius="0"
-                        Clicked="AddToDailyList"
+                        Clicked="AddToTrendingList"
                         TextColor="Black"
                         BackgroundColor="Orange"
                         Grid.Row="2"

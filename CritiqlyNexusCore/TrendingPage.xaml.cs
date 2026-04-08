@@ -18,6 +18,12 @@ public partial class TrendingPage : ContentPage
     {
         base.OnAppearing();
 
+        EntryQuery.Text = "";
+        StatusLabel.Text = "Utolsó frissítés: " + AppData.TrendingLastUpdated?.ToString("yyyy.MM.dd HH:mm") ?? "N/I";
+
+        SelectedIds.Clear();
+        QueryMovies.Clear();
+
     }
 
     public async void SearchQuery(Object sender, EventArgs e)
