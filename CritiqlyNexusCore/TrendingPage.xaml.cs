@@ -42,7 +42,7 @@ public partial class TrendingPage : ContentPage
     {
         var isResponseOk = await DisplayAlertAsync(
             "Kilépés",
-            "Biztosan ki akarsz lépni? Az eddigi változtatások elvesznek!",
+            "Biztosan ki akarsz lépni? A nem mentett változtatások elvesznek!",
             "Igen",
             "Mégse"
         );
