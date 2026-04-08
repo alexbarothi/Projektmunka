@@ -40,7 +40,7 @@
                         FontFamily="Kimberley"
                         FontSize="20"
                         CornerRadius="0"
-                        Clicked="AddToTrendingList"
+                        Clicked="EditMovie"
                         TextColor="Black"
                         BackgroundColor="#D4FF3E"
                         Grid.Row="2"
@@ -85,7 +85,7 @@
                         FontFamily="Kimberley"
                         FontSize="20"
                         CornerRadius="0"
-                        Clicked="AddToTrendingList"
+                        Clicked="EditMovie"
                         TextColor="Black"
                         BackgroundColor="Orange"
                         Grid.Row="2"
@@ -95,8 +95,8 @@
             </Border>
         </DataTemplate>
 
-        <local:TrendingPageTemplateSelector
-                x:Key="TrendingPageTemplateSelector"
+        <local:UpdatePageSelector
+                x:Key="UpdatePageSelector"
                 NormalTemplate="{StaticResource NormalTemplate}"
                 SelectedTemplate="{StaticResource SelectedTemplate}" />
     </ContentPage.Resources>
@@ -180,18 +180,7 @@
             </Button>
 
             <Button
-                Text="🔝 Automata Kiválasztás"
-                Clicked="autoSelect"
-                x:Name="rollRandomBtn"
-                FontFamily="Kimberley"
-                FontSize="20"
-                BackgroundColor="#D4FF3E"
-                Margin="15,30,0,20">
-
-            </Button>
-
-            <Button
-                Text="☑ Kiválasztottak Megtekintése"
+                Text="☑ Szerkesztettek Megtekintése"
                 Clicked="checkSelected"
                 x:Name="checkSelectedBtn"
                 FontFamily="Kimberley"
@@ -205,7 +194,7 @@
 
         <CollectionView 
             ItemsSource="{Binding QueryMovies}"
-            ItemTemplate="{StaticResource TrendingPageTemplateSelector}" 
+            ItemTemplate="{StaticResource UpdatePageSelector}" 
             SelectionMode="Single"
             HorizontalScrollBarVisibility="Always"
             HeightRequest="500"
