@@ -21,7 +21,17 @@ public partial class TrendingPage : ContentPage
 
     public async void SearchQuery(Object sender, EventArgs e)
     {
-
+        searchQueryBtn.BackgroundColor = Colors.Orange;
+        QueryMovies.Clear();
+        foreach (var movie in AppData.Movies)
+        {
+            if (movie.title.ToLower().Contains(EntryQuery.Text.ToLower()))
+            {
+                QueryMovies.Add(movie);
+            }
+        }
+        await Task.Delay(1000);
+        searchQueryBtn.BackgroundColor = Color.FromRgb(212, 255, 62);
     }
 
     public async void autoSelect(Object sender, EventArgs e)
