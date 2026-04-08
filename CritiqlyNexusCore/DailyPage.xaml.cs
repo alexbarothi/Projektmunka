@@ -15,8 +15,6 @@ public partial class DailyPage : ContentPage
     {
         InitializeComponent();
         BindingContext = this;
-
-        EntryQuery.Text = "";
     }
     protected override async void OnAppearing()
     {
