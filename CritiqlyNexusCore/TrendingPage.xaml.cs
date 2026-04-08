@@ -36,7 +36,33 @@ public partial class TrendingPage : ContentPage
 
     public async void autoSelect(Object sender, EventArgs e)
     {
+        Dictionary<int, int> trendingMovies = new Dictionary<int, int>();
 
+        foreach (var movie in AppData.Movies)
+        {
+            foreach (var rating in AppData.Ratings)
+            {
+                if (rating.movie_id == movie.id && !trendingMovies.ContainsKey(movie.id))
+                {
+                    //await DisplayAlertAsync("Alert", "Találtam mId + rId -> Nem volt még listában", "OK");
+                    trendingMovies.Add(movie.id, rating.stars);
+                }
+                else if (rating.movie_id == movie.id && trendingMovies.ContainsKey(movie.id))
+                {
+                    //await DisplayAlertAsync("Alert", "Találtam mId + rId ->  Volt már listában", "OK");
+                    trendingMovies[movie.id] += rating.stars;
+                }
+            }
+        }
+
+        int[] top4 = trendingMovies.OrderByDescending(x => x.Value).Take(4).Select(x => x.Key).ToArray();
+
+        for (int i = 0; i < top4.Length; i++)
+        {
+            SelectedIds.Add(top4[i]);
+        }
+
+        checkSelected(this, EventArgs.Empty);
     }
     public async void AddToTrendingList(Object sender, EventArgs e)
     {
