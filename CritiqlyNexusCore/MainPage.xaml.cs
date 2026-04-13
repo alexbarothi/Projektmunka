@@ -147,7 +147,7 @@ namespace CritiqlyNexusCore
             {
                 DailyMenuBtn.IsEnabled = true;
                 TrendingMenuBtn.IsEnabled = true;
-                TrendingMenuBtn.IsEnabled = true;
+                UpdateMenuBtn.IsEnabled = true;
                 DeleteMenuBtn.IsEnabled = true;
 
                 DailyMenuBtn.FadeTo(1, 1000);
