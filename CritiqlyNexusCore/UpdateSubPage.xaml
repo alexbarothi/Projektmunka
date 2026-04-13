@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CritiqlyNexusCore.UpdateSubPage"
+             Shell.NavBarIsVisible="False"
+             Title="NewPage1">
+    <VerticalStackLayout>
+        <HorizontalStackLayout 
+            VerticalOptions="Fill" 
+            BackgroundColor="#2A2720"
+            >
+            <Image 
+                Source='Images/critiqlyNexusCore.png'
+                MaximumHeightRequest="50"
+                Margin="30,30,0,30"
+                VerticalOptions="Center"
+                HorizontalOptions="Center">
+            </Image>
+            <Button 
+            Margin="500,20,5,30"
+            Clicked="Exit"
+            x:Name="exitBtn"
+            BackgroundColor="OrangeRed" 
+            Text="KILÉPÉS"
+            FontFamily="Kimberley"
+            TextColor="White"
+            MinimumWidthRequest="200"/>
+
+            <Button 
+            Margin="5,20,5,30"
+            Clicked="Save"
+            x:Name="SaveBtn"
+            BackgroundColor="Red" 
+            Text="MENTÉS"
+            FontFamily="Kimberley"
+            TextColor="White"
+            MinimumWidthRequest="200"/>
+        </HorizontalStackLayout>
+
+        <Grid
+                RowDefinitions="Auto,Auto,3*,Auto,Auto"
+                ColumnDefinitions="10*,*,10*"
+                RowSpacing="10"
+                ColumnSpacing="10"
+                Padding="10"
+                Margin="20"
+                BackgroundColor="#1C1A15">
+
+            <Border
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    BackgroundColor="#3E3C38"
+                    Stroke="#D4FF3E"
+                    StrokeThickness="3"
+                    StrokeShape="RoundRectangle 10">
+                <Label
+                        x:Name="LabelTitle"
+                        TextColor="White"
+                        Padding="20"
+                        FontFamily="Kimberley"
+                        FontSize="15"
+                        MaxLines="2"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"
+                        MinimumHeightRequest="50"/>
+            </Border>
+
+            <Border
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    BackgroundColor="#3E3C38"
+                    Stroke="#D4FF3E"
+                    StrokeThickness="3"
+                    StrokeShape="RoundRectangle 10">
+                <Label 
+                        x:Name="LabelGenre"
+                        TextColor="White"
+                        Padding="20"
+                        FontFamily="Kimberley"
+                        FontSize="15"
+                        MaxLines="10"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"
+                        MinimumHeightRequest="50"/>
+            </Border>
+
+            <Border
+                    Grid.Row="2"
+                    Grid.Column="0"
+                    BackgroundColor="#3E3C38"
+                    Stroke="#D4FF3E"
+                    StrokeThickness="3"
+                    StrokeShape="RoundRectangle 10">
+                <Label
+                        x:Name="LabelPlot"
+                        TextColor="White"
+                        Padding="20"
+                        FontFamily="Kimberley"
+                        FontSize="15"
+                        MaxLines="10"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"
+                        MinimumHeightRequest="200"/>
+            </Border>
+
+            <Border
+                    Grid.Row="3"
+                    Grid.Column="0"
+                    BackgroundColor="#3E3C38"
+                    Stroke="#D4FF3E"
+                    StrokeThickness="3"
+                    StrokeShape="RoundRectangle 10">
+                <Label
+                        x:Name="LabelDate"
+                        TextColor="White"
+                        Padding="20"
+                        FontFamily="Kimberley"
+                        FontSize="15"
+                        MaxLines="2"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"
+                        MinimumHeightRequest="50"/>
+            </Border>
+
+            <Border
+                    Grid.Row="4"
+                    Grid.Column="0"
+                    BackgroundColor="#3E3C38"
+                    Stroke="#D4FF3E"
+                    StrokeThickness="3"
+                    StrokeShape="RoundRectangle 10">
+                <Label
+                        x:Name="LabelPoster"
+                        TextColor="White"
+                        Padding="20"
+                        FontFamily="Kimberley"
+                        FontSize="15"
+                        MaxLines="2"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"
+                        MinimumHeightRequest="50"/>
+            </Border>
+
+            <Border
+    Grid.Row="0"
+    Grid.Column="2"
+    BackgroundColor="#3E3C38"
+    Stroke="#D4FF3E"
+    StrokeThickness="3"
+    StrokeShape="RoundRectangle 10">
+                <Entry
+        Placeholder="Új cím?"
+        FontFamily="Kimberley"
+        TextColor="White"
+        PlaceholderColor="#828282"
+        BackgroundColor="#3E3C38"
+        VerticalTextAlignment="Center"
+        HorizontalTextAlignment="Start"
+        x:Name="EntryTitle"/>
+            </Border>
+
+            <Border
+    Grid.Row="1"
+    Grid.Column="2"
+    BackgroundColor="#3E3C38"
+    Stroke="#D4FF3E"
+    StrokeThickness="3"
+    StrokeShape="RoundRectangle 10">
+                <Entry
+        Placeholder="Új műfaj?"
+        FontFamily="Kimberley"
+        TextColor="White"
+        PlaceholderColor="#828282"
+        BackgroundColor="#3E3C38"
+        VerticalTextAlignment="Center"
+        HorizontalTextAlignment="Start"
+        x:Name="EntryGenre"/>
+            </Border>
+
+            <Border
+    Grid.Row="2"
+    Grid.Column="2"
+    BackgroundColor="#3E3C38"
+    Stroke="#D4FF3E"
+    StrokeThickness="3"
+    StrokeShape="RoundRectangle 10">
+                <Entry
+        Placeholder="Új leírás?"
+        FontFamily="Kimberley"
+        TextColor="White"
+        PlaceholderColor="#828282"
+        BackgroundColor="#3E3C38"
+        VerticalTextAlignment="Center"
+        HorizontalTextAlignment="Start"
+        x:Name="EntryPlot"/>
+            </Border>
+
+            <Border
+                Grid.Row="3"
+                Grid.Column="2"
+                BackgroundColor="#3E3C38"
+                Stroke="#D4FF3E"
+                StrokeThickness="3"
+                StrokeShape="RoundRectangle 10">
+                <Entry
+                    Placeholder="Új megjelenési dátum?"
+                    FontFamily="Kimberley"
+                    TextColor="White"
+                    PlaceholderColor="#828282"
+                    BackgroundColor="#3E3C38"
+                    VerticalTextAlignment="Center"
+                    HorizontalTextAlignment="Start"
+                    x:Name="EntryDate"/>
+            </Border>
+
+            <Border
+                Grid.Row="4"
+                Grid.Column="2"
+                BackgroundColor="#3E3C38"
+                Stroke="#D4FF3E"
+                StrokeThickness="3"
+                StrokeShape="RoundRectangle 10">
+                <Entry
+                    Placeholder="Új poster link?"
+                    FontFamily="Kimberley"
+                    TextColor="White"
+                    PlaceholderColor="#828282"
+                    BackgroundColor="#3E3C38"
+                    VerticalTextAlignment="Center"
+                    HorizontalTextAlignment="Start"
+                    x:Name="EntryPoster"/>
+            </Border>
+        </Grid>
+    </VerticalStackLayout>
+</ContentPage>
