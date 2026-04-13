@@ -24,4 +24,40 @@ public partial class UpdateSubPage : ContentPage
         EntryDate.Text = "";
         EntryPoster.Text = "";
     }
+
+    public async void Exit(Object sender, EventArgs e)
+    {
+        var isResponseOk = await DisplayAlertAsync(
+            "Kilépés",
+            "Biztosan ki akarsz lépni? Az eddigi változtatások elvesznek!",
+            "Igen",
+            "Mégse"
+        );
+
+        if (isResponseOk)
+        {
+            AppData.UpdatePageSelectedMovie = null;
+            await Shell.Current.GoToAsync("//UpdatePage");
+        }
+        else
+        {
+            return;
+        }
+    }
+
+    public async void Save(Object sender, EventArgs e)
+    {
+        var updatedMovie = AppData.UpdatePageSelectedMovie;
+
+        updatedMovie.id = AppData.UpdatePageSelectedMovie.id;
+        updatedMovie.tmdb_id = AppData.UpdatePageSelectedMovie.tmdb_id;
+        updatedMovie.title = string.IsNullOrWhiteSpace(EntryTitle.Text) ? AppData.UpdatePageSelectedMovie.title : EntryTitle.Text;
+        updatedMovie.genre = string.IsNullOrWhiteSpace(EntryGenre.Text) ? AppData.UpdatePageSelectedMovie.genre : EntryGenre.Text;
+        updatedMovie.plot = string.IsNullOrWhiteSpace(EntryPlot.Text) ? AppData.UpdatePageSelectedMovie.plot : EntryPlot.Text;
+        updatedMovie.releaseDate = string.IsNullOrWhiteSpace(EntryDate.Text) ? AppData.UpdatePageSelectedMovie.releaseDate : DateTime.Parse(EntryDate.Text);
+        updatedMovie.poster = string.IsNullOrWhiteSpace(EntryPoster.Text) ? AppData.UpdatePageSelectedMovie.poster : EntryPoster.Text;
+        updatedMovie.IsUpdated = true;
+
+        await Shell.Current.GoToAsync("//UpdatePage");
+    }
 }
