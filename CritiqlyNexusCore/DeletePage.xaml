@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="CritiqlyNexusCore.DeletePage"
+             xmlns:local="clr-namespace:CritiqlyNexusCore.Models"
              Shell.NavBarIsVisible="False"
              Title="DeletePage">
     <ContentPage.Resources>
@@ -93,8 +94,8 @@
             </Border>
         </DataTemplate>
 
-        <local:DeletePageSelector 
-                x:Key="DeletePageSelector"
+        <local:DeletePageTemplateSelector 
+                x:Key="DeletePageTemplateSelector"
                 NormalTemplate="{StaticResource NormalTemplate}"
                 DeletedTemplate="{StaticResource DeletedTemplate}" />
     </ContentPage.Resources>
@@ -192,7 +193,7 @@
 
         <CollectionView 
             ItemsSource="{Binding QueryMovies}"
-            ItemTemplate="{StaticResource DeletePageSelector}" 
+            ItemTemplate="{StaticResource DeletePageTemplateSelector}" 
             SelectionMode="Single"
             HorizontalScrollBarVisibility="Always"
             HeightRequest="500"
