@@ -43,7 +43,26 @@ public partial class DeletePage : ContentPage
     }
     public async void deleteMovie(Object sender, EventArgs e)
     {
+        var Button = sender as Button;
+        var id = Button?.CommandParameter;
 
+        if (DeletedMovies.Contains(AppData.Movies.First(x => x.id == (Int32)id)))
+        {
+            Movie sel = DeletedMovies.First(x => x.id == (Int32)id);
+            DeletedMovies.Remove(sel);
+            sel.IsDeleted = false;
+            checkDeleted(this, EventArgs.Empty);
+        }
+        else
+        {
+            Button.BackgroundColor = Colors.Orange;
+            Movie del = AppData.Movies.First(x => x.id == (Int32)id);
+            del.IsDeleted = true;
+            DeletedMovies.Add(del);
+            await Task.Delay(500);
+            Button.BackgroundColor = Color.FromRgb(212, 255, 62);
+            SearchQuery(this, EventArgs.Empty);
+        }
     }
 
     public async void checkDeleted(Object sender, EventArgs e)
