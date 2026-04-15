@@ -4,7 +4,7 @@ An Admin Interface for the Critiqly website
 
 
 
-#### **>Version: CNC 0.5.1**
+#### **>Version: CNC 0.5.2**
 
 
 
