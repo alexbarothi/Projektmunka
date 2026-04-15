@@ -18,11 +18,11 @@ An Admin Interface for the Critiqly website
 
 
 
-###### \->Select and update daily featured movies, up to one year ahead.
+###### \-> Select and update daily featured movies, up to one year ahead.
 
-###### \->Control trending movie listings
+###### \-> Control trending movie listings
 
-###### \->Manage the full movie catalog, including update and delete functionality
+###### \-> Manage the full movie catalog, including update and delete functionality
 
 
 
@@ -34,5 +34,5 @@ An Admin Interface for the Critiqly website
 
 
 
-##### \->DailyPage: The "last changed" status only updates after a page reload.
+##### \-> None
 
