@@ -62,7 +62,7 @@ public partial class TrendingPage : ContentPage
             }
         }
 
-        int[] top4 = trendingMovies.OrderByDescending(x => x.Value).Take(4).Select(x => x.Key).ToArray();
+        int[] top4 = trendingMovies.OrderByDescending(x => x.Value).Take(15).Select(x => x.Key).ToArray();
 
         for (int i = 0; i < top4.Length; i++)
         {
@@ -77,7 +77,7 @@ public partial class TrendingPage : ContentPage
         var Button = sender as Button;
         var id = Button?.CommandParameter;
 
-        if (SelectedIds.Count != 4 && !SelectedIds.Contains((Int32)id))
+        if (SelectedIds.Count <= 15 && !SelectedIds.Contains((Int32)id))
         {
             Button.BackgroundColor = Colors.Orange;
             SelectedIds.Add((Int32)id);
