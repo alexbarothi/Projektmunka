@@ -67,7 +67,16 @@ public partial class DeletePage : ContentPage
 
     public async void checkDeleted(Object sender, EventArgs e)
     {
+        QueryMovies.Clear();
+        checkDeletedBtn.BackgroundColor = Colors.Orange;
 
+        foreach (var movie in DeletedMovies)
+        {
+            await DisplayAlertAsync("DEBUG", movie.title + ": " + movie.IsDeleted, "OK");
+            QueryMovies.Add(movie);
+        }
+        await Task.Delay(500);
+        checkDeletedBtn.BackgroundColor = Color.FromRgb(212, 255, 62);
     }
 
     public async void Exit(Object sender, EventArgs e)
