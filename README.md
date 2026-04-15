@@ -4,7 +4,7 @@ An Admin Interface for the Critiqly website
 
 
 
-#### **>Version: CNC 0.5.0**
+#### **>Version: CNC 0.5.1**
 
 
 
@@ -27,12 +27,4 @@ An Admin Interface for the Critiqly website
 
 
 ##### The system is built to simplify content management and ensure that the platform stays up-to-date with minimal effort.
-
-
-
-#### Known Issues:
-
-
-
-##### \-> None
 
