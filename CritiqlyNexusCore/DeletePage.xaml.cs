@@ -100,6 +100,56 @@ public partial class DeletePage : ContentPage
 
     public async void Save(Object sender, EventArgs e)
     {
+        bool islastRequestSuccessful = true;
+        if (DeletedMovies.Count > 0)
+        {
+            HttpClient client = new HttpClient();
 
+            foreach (var movie in DeletedMovies)
+            {
+                var data = new
+                {
+                    tmdb_id = movie.tmdb_id,
+                    title = movie.title,
+                    genre = movie.genre,
+                    plot = movie.plot,
+                    releaseDate = movie.releaseDate?.ToString("yyyy-MM-dd"),
+                    poster = movie.poster,
+                    deleted_at = DateTime.Now
+                };
+
+                var json = JsonSerializer.Serialize(data);
+                var httpData = new StringContent(json, Encoding.UTF8, "application/json");
+
+                var response = await client.PutAsync($"http://localhost:8000/api/movies/{movie.id}", httpData);
+                var responseText = await response.Content.ReadAsStringAsync();
+
+                /*await DisplayAlertAsync("DEBUG",
+                $"{response.StatusCode}\n{responseText}",
+                "OK");*/
+
+                if (response.IsSuccessStatusCode)
+                {
+                    islastRequestSuccessful = true;
+                }
+                else
+                {
+                    await DisplayAlertAsync("Hiba", "A mentés nem sikerült! \n" +
+                        $"A hiba ezzel történt:  {movie.title} + \n" +
+                        "Próbáld újra!", "OK");
+                    islastRequestSuccessful = false;
+                }
+            }
+
+            if (islastRequestSuccessful)
+            {
+                await Shell.Current.GoToAsync("//MainPage");
+                DeletedMovies.Clear();
+            }
+        }
+        else
+        {
+            await DisplayAlertAsync("INFO", "Nincs kijelölve film!", "OK");
+        }
     }
 }
