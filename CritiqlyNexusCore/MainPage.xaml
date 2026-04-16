@@ -17,9 +17,9 @@
             </Image>
 
             <Button 
-            Margin="250,20,5,0"
+            Margin="290,25,5,0"
             x:Name="getMoviesBtn"
-            BackgroundColor="#BA521A"
+            BackgroundColor="#8CCC60"
             Text="FILMEK.."
             IsEnabled="False"
             FontFamily="Kimberley"
@@ -28,9 +28,9 @@
             MinimumWidthRequest="200"/>
 
             <Button 
-            Margin="5,20,5,0"
+            Margin="5,25,5,0"
             x:Name="getRatingsBtn"
-            BackgroundColor="#BA521A" 
+            BackgroundColor="#8CCC60" 
             Text="ÉRTÉKELÉSEK.."
             IsEnabled="False"
             FontFamily="Kimberley"
@@ -39,10 +39,10 @@
             MinimumWidthRequest="200"/>
 
             <Button 
-            Margin="40,20,5,0"
+            Margin="5,25,5,0"
             Clicked="LogOut"
             x:Name="logOutBtn"
-            BackgroundColor="Red" 
+            BackgroundColor="#E85C43" 
             Text="KIJELENTKEZÉS"
             FontFamily="Kimberley"
             TextColor="White"
@@ -164,7 +164,7 @@
                 TextColor="White"
                 Margin="50,200,0,0"
                 HorizontalOptions="End"
-                Text="CNC VERSION 0.5.1"
+                Text="CNC VERSION 0.5.3"
                 />
         </HorizontalStackLayout>
 

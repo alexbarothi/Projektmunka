@@ -52,7 +52,7 @@ namespace CritiqlyNexusCore
 
             if(movies.Count > 0)
             {
-                getMoviesBtn.BackgroundColor = Colors.DarkGreen;
+                getMoviesBtn.BackgroundColor = Color.FromRgb(167, 255, 92);
                 getMoviesBtn.Text = "FILMEK ✓";
                 //getMoviesBtn.TextColor = Colors.Black;
 
@@ -76,7 +76,7 @@ namespace CritiqlyNexusCore
 
             if(ratings.Count > 0)
             {
-                getRatingsBtn.BackgroundColor = Colors.DarkGreen;
+                getRatingsBtn.BackgroundColor = Color.FromRgb(167, 255, 92);
                 getRatingsBtn.Text = "ÉRTÉKELÉSEK ✓";
                 //getMoviesBtn.TextColor = Colors.Black;
 
