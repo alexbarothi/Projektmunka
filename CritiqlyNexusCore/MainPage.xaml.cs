@@ -149,11 +149,13 @@ namespace CritiqlyNexusCore
                 TrendingMenuBtn.IsEnabled = true;
                 UpdateMenuBtn.IsEnabled = true;
                 DeleteMenuBtn.IsEnabled = true;
+                StreamingBtn.IsEnabled = true;
 
                 DailyMenuBtn.FadeTo(1, 1000);
                 TrendingMenuBtn.FadeTo(1, 1000);
                 UpdateMenuBtn.FadeTo(1, 1000);
                 DeleteMenuBtn.FadeTo(1, 1000);
+                StreamingBtn.FadeTo(1, 1000);
             }
         }
 
@@ -177,6 +179,10 @@ namespace CritiqlyNexusCore
             await Shell.Current.GoToAsync("//DeletePage");
         }
 
+        public async void OpenStreamingPage(Object sender, EventArgs e)
+        {
+            await Shell.Current.GoToAsync("//StreamingPage");
+        }
         public async void LogOut(Object sender, EventArgs e)
         {
             await Shell.Current.GoToAsync("//LoginPage");

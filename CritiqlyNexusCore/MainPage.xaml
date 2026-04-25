@@ -63,7 +63,7 @@
 
         <Grid
             ColumnDefinitions="Auto,Auto,Auto,Auto"
-            RowDefinitions="50,50,80,80"
+            RowDefinitions="50,50,80,80,80"
             HorizontalOptions="Center"
             HeightRequest="300"
             RowSpacing="10"
@@ -153,6 +153,27 @@
                     FontSize="30"
                     IsEnabled="False"/>
             </Border>
+
+            <Border
+                Stroke="#E7FF78"
+                StrokeThickness="5"
+                Grid.Column="0"
+                Grid.ColumnSpan="4"
+                Grid.Row="4"
+                Grid.RowSpan="0"
+                StrokeShape="RoundRectangle 15">
+
+                <Button
+                    Clicked="OpenDailyPage"
+                    x:Name="StreamingBtn"
+                    BackgroundColor="#D4FF3E"
+                    Text="STREAMING LINKEK HITELESÍTÉSE"
+                    FontFamily="Kimberley"
+                    TextColor="#1C1A15"
+                    Opacity="0.4"
+                    FontSize="40"
+                    IsEnabled="False"/>
+            </Border>
         </Grid>
 
         <HorizontalStackLayout
@@ -164,7 +185,7 @@
                 TextColor="White"
                 Margin="50,200,0,0"
                 HorizontalOptions="End"
-                Text="CNC VERSION 0.5.5"
+                Text="CNC VERSION 0.6.0"
                 />
         </HorizontalStackLayout>
 
