@@ -71,6 +71,7 @@ public partial class TrendingPage : ContentPage
         for (int i = 0; i < tops.Length; i++)
         {
             SelectedIds.Add(tops[i]);
+            AppData.Movies.First(x => x.id == tops[i]).isSelectedTrending = true;
         }
 
         checkSelected(this, EventArgs.Empty);

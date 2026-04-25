@@ -122,7 +122,7 @@ public partial class UpdatePage : ContentPage
                     poster = movie.poster,
                     trailerUrl = movie.trailerUrl,
                     streamUrl = movie.streamUrl,
-                    deleted_at = "null"
+                    deleted_at = (DateTime?)null
                 };
 
                 var json = JsonSerializer.Serialize(data);
