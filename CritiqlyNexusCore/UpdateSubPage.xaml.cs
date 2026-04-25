@@ -17,12 +17,16 @@ public partial class UpdateSubPage : ContentPage
         //await DisplayAlertAsync("DEBUG", AppData.updatePageSelectedMovie.releaseDate.ToString(), "OK");
         LabelDate.Text = AppData.UpdatePageSelectedMovie.releaseDate?.ToString("yyyy-MM-dd");
         LabelPoster.Text = AppData.UpdatePageSelectedMovie.poster;
+        LabelTrailer.Text = AppData.UpdatePageSelectedMovie.trailerUrl;
+        LabelStreaming.Text = AppData.UpdatePageSelectedMovie.streamUrl;
 
         EntryTitle.Text = "";
         EntryGenre.Text = "";
         EntryPlot.Text = "";
         EntryDate.Text = "";
         EntryPoster.Text = "";
+        EntryTrailer.Text = "";
+        EntryStreaming.Text = "";
     }
 
     public async void Exit(Object sender, EventArgs e)
@@ -56,6 +60,8 @@ public partial class UpdateSubPage : ContentPage
         updatedMovie.plot = string.IsNullOrWhiteSpace(EntryPlot.Text) ? AppData.UpdatePageSelectedMovie.plot : EntryPlot.Text;
         updatedMovie.releaseDate = string.IsNullOrWhiteSpace(EntryDate.Text) ? AppData.UpdatePageSelectedMovie.releaseDate : DateTime.Parse(EntryDate.Text);
         updatedMovie.poster = string.IsNullOrWhiteSpace(EntryPoster.Text) ? AppData.UpdatePageSelectedMovie.poster : EntryPoster.Text;
+        updatedMovie.trailerUrl = string.IsNullOrWhiteSpace(EntryTrailer.Text) ? AppData.UpdatePageSelectedMovie.trailerUrl : EntryTrailer.Text;
+        updatedMovie.streamUrl = string.IsNullOrWhiteSpace(EntryStreaming.Text) ? AppData.UpdatePageSelectedMovie.streamUrl : EntryStreaming.Text;
         updatedMovie.IsUpdated = true;
 
         await Shell.Current.GoToAsync("//UpdatePage");

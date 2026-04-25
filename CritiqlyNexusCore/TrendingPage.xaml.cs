@@ -43,31 +43,34 @@ public partial class TrendingPage : ContentPage
 
     public async void autoSelect(Object sender, EventArgs e)
     {
-        Dictionary<int, int> trendingMovies = new Dictionary<int, int>();
+        Dictionary<int, int> totalStars = new Dictionary<int, int>();
+        Dictionary<int, int> voteCounts = new Dictionary<int, int>();
 
-        foreach (var movie in AppData.Movies)
+        foreach (var rating in AppData.Ratings)
         {
-            foreach (var rating in AppData.Ratings)
+            if (!totalStars.ContainsKey(rating.movie_id))
             {
-                if (rating.movie_id == movie.id && !trendingMovies.ContainsKey(movie.id))
-                {
-                    //await DisplayAlertAsync("Alert", "Találtam mId + rId -> Nem volt még listában", "OK");
-                    trendingMovies.Add(movie.id, rating.stars);
-                }
-                else if (rating.movie_id == movie.id && trendingMovies.ContainsKey(movie.id))
-                {
-                    //await DisplayAlertAsync("Alert", "Találtam mId + rId ->  Volt már listában", "OK");
-                    trendingMovies[movie.id] += rating.stars;
-                }
+                totalStars[rating.movie_id] = 0;
+                voteCounts[rating.movie_id] = 0;
             }
+
+            totalStars[rating.movie_id] += rating.stars;
+            voteCounts[rating.movie_id]++;
         }
 
-        int[] top4 = trendingMovies.OrderByDescending(x => x.Value).Take(15).Select(x => x.Key).ToArray();
+        var tops = totalStars
+        .Select(x => new {
+            MovieId = x.Key,
+            Avg = (double)x.Value / voteCounts[x.Key]
+        })
+        .OrderByDescending(x => x.Avg)
+        .Take(15)
+        .Select(x => x.MovieId)
+        .ToArray();
 
-        for (int i = 0; i < top4.Length; i++)
+        for (int i = 0; i < tops.Length; i++)
         {
-            SelectedIds.Add(top4[i]);
-            AppData.Movies.First(x => x.id == top4[i]).isSelectedTrending = true;
+            SelectedIds.Add(tops[i]);
         }
 
         checkSelected(this, EventArgs.Empty);

@@ -38,13 +38,12 @@
         </HorizontalStackLayout>
 
         <Grid
-            RowDefinitions="Auto,Auto,3*,Auto,Auto"
+            RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto"
             ColumnDefinitions="10*,*,10*"
             RowSpacing="10"
             ColumnSpacing="10"
             Padding="10"
-            Margin="20"
-            BackgroundColor="#1C1A15">
+            Margin="20">
 
             <Border
                 Grid.Row="0"
@@ -100,7 +99,7 @@
                     MaxLines="10"
                     HorizontalOptions="Center"
                     VerticalOptions="Center"
-                    MinimumHeightRequest="200"/>
+                    MinimumHeightRequest="150"/>
             </Border>
 
             <Border
@@ -131,6 +130,44 @@
                 StrokeShape="RoundRectangle 10">
                 <Label
                     x:Name="LabelPoster"
+                    TextColor="White"
+                    Padding="20"
+                    FontFamily="Kimberley"
+                    FontSize="15"
+                    MaxLines="2"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    MinimumHeightRequest="50"/>
+            </Border>
+
+            <Border
+                Grid.Row="5"
+                Grid.Column="0"
+                BackgroundColor="#3E3C38"
+                Stroke="#D4FF3E"
+                StrokeThickness="3"
+                StrokeShape="RoundRectangle 10">
+                <Label
+                    x:Name="LabelTrailer"
+                    TextColor="White"
+                    Padding="20"
+                    FontFamily="Kimberley"
+                    FontSize="15"
+                    MaxLines="2"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    MinimumHeightRequest="50"/>
+            </Border>
+
+            <Border
+                Grid.Row="6"
+                Grid.Column="0"
+                BackgroundColor="#3E3C38"
+                Stroke="#D4FF3E"
+                StrokeThickness="3"
+                StrokeShape="RoundRectangle 10">
+                <Label
+                    x:Name="LabelStreaming"
                     TextColor="White"
                     Padding="20"
                     FontFamily="Kimberley"
@@ -229,6 +266,42 @@
                     VerticalTextAlignment="Center"
                     HorizontalTextAlignment="Start"
                     x:Name="EntryPoster"/>
+            </Border>
+
+            <Border
+                Grid.Row="5"
+                Grid.Column="2"
+                BackgroundColor="#3E3C38"
+                Stroke="#D4FF3E"
+                StrokeThickness="3"
+                StrokeShape="RoundRectangle 10">
+                <Entry
+                    Placeholder="Új előzetes link?"
+                    FontFamily="Kimberley"
+                    TextColor="White"
+                    PlaceholderColor="#828282"
+                    BackgroundColor="#3E3C38"
+                    VerticalTextAlignment="Center"
+                    HorizontalTextAlignment="Start"
+                    x:Name="EntryTrailer"/>
+            </Border>
+
+            <Border
+                Grid.Row="6"
+                Grid.Column="2"
+                BackgroundColor="#3E3C38"
+                Stroke="#D4FF3E"
+                StrokeThickness="3"
+                StrokeShape="RoundRectangle 10">
+                <Entry
+                    Placeholder="Új streaming link?"
+                    FontFamily="Kimberley"
+                    TextColor="White"
+                    PlaceholderColor="#828282"
+                    BackgroundColor="#3E3C38"
+                    VerticalTextAlignment="Center"
+                    HorizontalTextAlignment="Start"
+                    x:Name="EntryStreaming"/>
             </Border>
         </Grid>
     </VerticalStackLayout>

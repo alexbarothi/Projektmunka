@@ -120,6 +120,8 @@ public partial class UpdatePage : ContentPage
                     plot = movie.plot,
                     releaseDate = movie.releaseDate?.ToString("yyyy-MM-dd"),
                     poster = movie.poster,
+                    trailerUrl = movie.trailerUrl,
+                    streamUrl = movie.streamUrl,
                     deleted_at = "null"
                 };
 
@@ -142,6 +144,8 @@ public partial class UpdatePage : ContentPage
                     existing.plot = movie.plot;
                     existing.releaseDate = movie.releaseDate;
                     existing.poster = movie.poster;
+                    existing.trailerUrl = movie.trailerUrl;
+                    existing.streamUrl = movie.streamUrl;
                 }
 
                 if (response.IsSuccessStatusCode)
