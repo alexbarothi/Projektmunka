@@ -15,6 +15,8 @@ namespace CritiqlyNexusCore.Models
         public string poster { get; set; }
         public string fullPosterUrl =>
             string.IsNullOrEmpty(poster) ? null : $"https://image.tmdb.org/t/p/w500{poster}";
+        public string trailerUrl { get; set; }
+        public string streamUrl { get; set; }
         public DateTime? created_at { get; set; }
         public DateTime? updated_at { get; set; }
         public DateTime? deleted_at { get; set; }
