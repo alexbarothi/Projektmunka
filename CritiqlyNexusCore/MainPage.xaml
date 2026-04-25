@@ -65,7 +65,6 @@
             ColumnDefinitions="Auto,Auto,Auto,Auto"
             RowDefinitions="50,50,80,80,80"
             HorizontalOptions="Center"
-            HeightRequest="300"
             RowSpacing="10"
             ColumnSpacing="10"
             Margin="0,50,0,0">
@@ -160,11 +159,10 @@
                 Grid.Column="0"
                 Grid.ColumnSpan="4"
                 Grid.Row="4"
-                Grid.RowSpan="0"
                 StrokeShape="RoundRectangle 15">
 
                 <Button
-                    Clicked="OpenDailyPage"
+                    Clicked="OpenStreamingPage"
                     x:Name="StreamingBtn"
                     BackgroundColor="#D4FF3E"
                     Text="STREAMING LINKEK HITELESÍTÉSE"
@@ -172,7 +170,7 @@
                     TextColor="#1C1A15"
                     Opacity="0.4"
                     FontSize="40"
-                    IsEnabled="False"/>
+                    IsEnabled="True"/>
             </Border>
         </Grid>
 

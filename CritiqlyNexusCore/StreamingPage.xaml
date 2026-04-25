@@ -150,7 +150,7 @@
             BackgroundColor="#2A2720">
             <Button
                 Text="⛝ Hitelesítésre Váró Filmek Megtekintése"
-                Clicked="checkQueue"
+                Clicked="CheckQueue"
                 x:Name="checkQueveBtn"
                 FontFamily="Kimberley"
                 FontSize="20"
@@ -159,7 +159,7 @@
             </Button>
             <Button
                 Text="☑ Hitelesített Filmek Megtekintése"
-                Clicked="checkVerified"
+                Clicked="CheckVerified"
                 x:Name="checkVerifiedBtn"
                 FontFamily="Kimberley"
                 FontSize="20"

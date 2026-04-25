@@ -23,7 +23,7 @@ public partial class StreamingPage : ContentPage
 
     }
 
-    public async void CheckQueve(Object sender, EventArgs e)
+    public async void CheckQueue(Object sender, EventArgs e)
     {
 
     }
