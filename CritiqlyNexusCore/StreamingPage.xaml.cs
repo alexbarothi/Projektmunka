@@ -26,7 +26,14 @@ public partial class StreamingPage : ContentPage
     }
     public async void VerifyMovie(Object sender, EventArgs e)
     {
+        int selectedId = 0;
+        var Button = sender as Button;
+        var id = Button?.CommandParameter;
 
+        AppData.StreamingPageSelectedToVerify = AppData.streamingVotes.First(x => x.MovieId == (Int32)id);
+        AppData.StreamingPageSelectedMovie = AppData.Movies.First(x => x.id == (Int32)id);
+
+        await Shell.Current.GoToAsync("//StreamingSubPage");
     }
 
     public async void CheckQueue(Object sender, EventArgs e)
@@ -76,25 +83,6 @@ public partial class StreamingPage : ContentPage
 
     public async void Exit(Object sender, EventArgs e)
     {
-        var isResponseOk = await DisplayAlertAsync(
-            "Kilépés",
-            "Biztosan ki akarsz lépni? Az eddigi változtatások elvesznek!",
-            "Igen",
-            "Mégse"
-        );
-
-        if (isResponseOk)
-        {
-            await Shell.Current.GoToAsync("//MainPage");
-        }
-        else
-        {
-            return;
-        }
-    }
-
-    public async void Save(Object sender, EventArgs e)
-    {
-
+        await Shell.Current.GoToAsync("//MainPage");
     }
 }
