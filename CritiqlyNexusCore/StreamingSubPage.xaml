@@ -3,10 +3,252 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="CritiqlyNexusCore.StreamingSubPage"
              Title="StreamingSubPage">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+    <VerticalStackLayout BackgroundColor="#2A2720">
+
+        <HorizontalStackLayout 
+            VerticalOptions="Fill" 
+            BackgroundColor="#2A2720">
+
+            <Image 
+                Source="Images/critiqlyNexusCore.png"
+                MaximumHeightRequest="50"
+                Margin="30,30,0,0"
+                VerticalOptions="Center"
+                HorizontalOptions="Center" />
+
+            <Button 
+                Margin="500,20,5,0"
+                Clicked="Back"
+                x:Name="backBtn"
+                BackgroundColor="OrangeRed" 
+                Text="VISSZA"
+                FontFamily="Kimberley"
+                TextColor="White"
+                MinimumWidthRequest="200"/>
+
+            <Button 
+                Margin="5,20,5,0"
+                Clicked="Save"
+                x:Name="saveBtn"
+                BackgroundColor="#D4FF3E" 
+                Text="MENTÉS"
+                FontFamily="Kimberley"
+                TextColor="Black"
+                MinimumWidthRequest="200"/>
+        </HorizontalStackLayout>
+
+        <HorizontalStackLayout
+            BackgroundColor="#2A2720">
+
+            <Label
+                x:Name="StatusLabel"
+                Text="Streaming adatok hitelesítése"
+                FontSize="25"
+                FontFamily="Kimberley"
+                TextColor="White"
+                Margin="50,30,0,20" />
+        </HorizontalStackLayout>
+
+        <Grid
+            BackgroundColor="#2A2720"
+            Padding="50,20,50,30"
+            ColumnDefinitions="300,*"
+            RowDefinitions="Auto">
+
+            <Border 
+                Grid.Column="0"
+                BackgroundColor="#F5F5F5"
+                Stroke="#D4FF3E"
+                StrokeThickness="5"
+                StrokeShape="RoundRectangle 10"
+                WidthRequest="250"
+                MaximumHeightRequest="550">
+
+                <Grid
+                    RowDefinitions="Auto,*"
+                    BackgroundColor="#1C1A15">
+
+                    <Image
+                        x:Name="MoviePosterImage"
+                        WidthRequest="250"
+                        Grid.Row="0"/>
+
+                    <Label 
+                        x:Name="MovieTitleLabel"
+                        TextColor="White"
+                        Padding="10"
+                        FontFamily="Kimberley"
+                        FontSize="18"
+                        MaxLines="3"
+                        HorizontalOptions="Center"
+                        HorizontalTextAlignment="Center"
+                        MinimumHeightRequest="70"
+                        Grid.Row="1"/>
+                </Grid>
+            </Border>
+
+            <VerticalStackLayout
+                Grid.Column="1"
+                Margin="40,0,0,0"
+                Spacing="15">
+
+                <Label
+                    Text="Válaszd ki, hol érhető el ténylegesen a film:"
+                    FontSize="22"
+                    FontFamily="Kimberley"
+                    TextColor="White"
+                    Margin="0,0,0,10"/>
+
+                <Border
+                    BackgroundColor="#1C1A15"
+                    Stroke="#D4FF3E"
+                    StrokeThickness="4"
+                    StrokeShape="RoundRectangle 10"
+                    Padding="20">
+
+                    <VerticalStackLayout Spacing="15">
+
+                        <Grid ColumnDefinitions="Auto,*,Auto">
+                            <RadioButton
+                                x:Name="NetflixRadioButton"
+                                Grid.Column="0"
+                                GroupName="StreamingPlatform"
+                                Value="Netflix"
+                                Color="#D4FF3E"
+                                VerticalOptions="Center" />
+
+                            <Label
+                                Grid.Column="1"
+                                Text="Netflix"
+                                FontFamily="Kimberley"
+                                FontSize="20"
+                                TextColor="White"
+                                VerticalOptions="Center"
+                                Margin="15,0,0,0"/>
+
+                            <Label
+                                x:Name="NetflixVotesLabel"
+                                Grid.Column="2"
+                                TextColor="#D4FF3E"
+                                FontFamily="Kimberley"
+                                FontSize="20"
+                                VerticalOptions="Center"/>
+                        </Grid>
+
+                        <Grid ColumnDefinitions="Auto,*,Auto">
+                            <RadioButton
+                                x:Name="HboRadioButton"
+                                Grid.Column="0"
+                                GroupName="StreamingPlatform"
+                                Value="Hbo"
+                                VerticalOptions="Center" />
+
+                            <Label
+                                Grid.Column="1"
+                                Text="HBO Max"
+                                FontFamily="Kimberley"
+                                FontSize="20"
+                                TextColor="White"
+                                VerticalOptions="Center"
+                                Margin="15,0,0,0"/>
+
+                            <Label
+                                x:Name="HboVotesLabel"
+                                Grid.Column="2"
+                                TextColor="#D4FF3E"
+                                FontFamily="Kimberley"
+                                FontSize="20"
+                                VerticalOptions="Center"/>
+                        </Grid>
+
+                        <Grid ColumnDefinitions="Auto,*,Auto">
+                            <RadioButton
+                                x:Name="AmazonRadioButton"
+                                Grid.Column="0"
+                                GroupName="StreamingPlatform"
+                                Value="Amazon"
+                                VerticalOptions="Center" />
+
+                            <Label
+                                Grid.Column="1"
+                                Text="Amazon Prime"
+                                FontFamily="Kimberley"
+                                FontSize="20"
+                                TextColor="White"
+                                VerticalOptions="Center"
+                                Margin="15,0,0,0"/>
+
+                            <Label
+                                x:Name="AmazonVotesLabel"
+                                Grid.Column="2"
+                                TextColor="#D4FF3E"
+                                FontFamily="Kimberley"
+                                FontSize="20"
+                                VerticalOptions="Center"/>
+                        </Grid>
+
+                        <Grid ColumnDefinitions="Auto,*,Auto">
+                            <RadioButton
+                                x:Name="DisneyRadioButton"
+                                Grid.Column="0"
+                                GroupName="StreamingPlatform"
+                                Value="Disney"
+                                VerticalOptions="Center" />
+
+                            <Label
+                                Grid.Column="1"
+                                Text="Disney+"
+                                FontFamily="Kimberley"
+                                FontSize="20"
+                                TextColor="White"
+                                VerticalOptions="Center"
+                                Margin="15,0,0,0"/>
+
+                            <Label
+                                x:Name="DisneyVotesLabel"
+                                Grid.Column="2"
+                                TextColor="#D4FF3E"
+                                FontFamily="Kimberley"
+                                FontSize="20"
+                                VerticalOptions="Center"/>
+                        </Grid>
+
+                        <Grid ColumnDefinitions="Auto,*,Auto">
+                            <RadioButton
+                                x:Name="AppleRadioButton"
+                                Grid.Column="0"
+                                GroupName="StreamingPlatform"
+                                Value="Apple"
+                                VerticalOptions="Center" />
+
+                            <Label
+                                Grid.Column="1"
+                                Text="Apple TV+"
+                                FontFamily="Kimberley"
+                                FontSize="20"
+                                TextColor="White"
+                                VerticalOptions="Center"
+                                Margin="15,0,0,0"/>
+
+                            <Label
+                                x:Name="AppleVotesLabel"
+                                Grid.Column="2"
+                                TextColor="#D4FF3E"
+                                FontFamily="Kimberley"
+                                FontSize="20"
+                                VerticalOptions="Center"/>
+                        </Grid>
+
+                    </VerticalStackLayout>
+                </Border>
+
+                <Label
+                    Text="A mentés után a film hitelesítettként lesz kezelve."
+                    FontSize="16"
+                    FontFamily="Kimberley"
+                    TextColor="White"
+                    Margin="0,15,0,0"/>
+            </VerticalStackLayout>
+        </Grid>
     </VerticalStackLayout>
 </ContentPage>

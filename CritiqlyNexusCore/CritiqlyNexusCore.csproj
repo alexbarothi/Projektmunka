@@ -95,6 +95,9 @@
 	  <MauiXaml Update="StreamingPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="StreamingSubPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="UpdateSubPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
