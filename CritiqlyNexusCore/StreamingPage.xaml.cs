@@ -17,6 +17,8 @@ public partial class StreamingPage : ContentPage
     {
         base.OnAppearing();
 
+        StatusLabel.Text = "Válassz ki egy hitelesítésre váró filmet!";
+
     }
     public async void VerifyMovie(Object sender, EventArgs e)
     {
