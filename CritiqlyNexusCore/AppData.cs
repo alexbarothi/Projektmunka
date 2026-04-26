@@ -14,6 +14,7 @@ namespace CritiqlyNexusCore
         public static List<Movie> Movies { get; set; } = new List<Movie>();
         public static List<Rating> Ratings { get; set; } = new List<Rating>();
         public static Movie UpdatePageSelectedMovie { get; set; }
-        public static List<StreamingVote> streamingVotes { get; set; } = new List<StreamingVote>(); 
+        public static List<StreamingVote> streamingVotes { get; set; } = new List<StreamingVote>();
+        public static StreamingVote StreamingPageSelectedToVerify { get; set; }
     }
 }
