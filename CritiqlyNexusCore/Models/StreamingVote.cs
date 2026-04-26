@@ -5,7 +5,7 @@ using System.Text.Json.Serialization;
 
 namespace CritiqlyNexusCore.Models
 {
-    public class StreamingVotes
+    public class StreamingVote
     {
         [JsonPropertyName("id")]
         public int Id { get; set; }
