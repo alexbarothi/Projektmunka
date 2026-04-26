@@ -8,6 +8,7 @@ namespace CritiqlyNexusCore;
 public partial class StreamingPage : ContentPage
 {
     public ObservableCollection<Movie> QueryMovies { get; set; } = new ObservableCollection<Movie>();
+    public List<StreamingVote> verifiedStreaming = new List<StreamingVote>();
     public StreamingPage()
 	{
 		InitializeComponent();
@@ -20,7 +21,7 @@ public partial class StreamingPage : ContentPage
 
         StatusLabel.Text = "Válassz ki egy hitelesítésre váró filmet!";
 
-        CheckVerified(this, EventArgs.Empty);
+        CheckQueue(this, EventArgs.Empty);
 
     }
     public async void VerifyMovie(Object sender, EventArgs e)
@@ -49,11 +50,28 @@ public partial class StreamingPage : ContentPage
                 QueryMovies.Add(movie);
             }
         }
+
+        tempIdList.Clear();
     }
 
     public async void CheckVerified(Object sender, EventArgs e)
     {
+        QueryMovies.Clear();
 
+        List<int> tempIdList = new List<int>();
+
+        foreach (StreamingVote data in verifiedStreaming)
+        {
+            tempIdList.Add(data.MovieId);
+        }
+
+        foreach (Movie movie in AppData.Movies)
+        {
+            if (tempIdList.Contains(movie.id))
+            {
+                QueryMovies.Add(movie);
+            }
+        }
     }
 
     public async void Exit(Object sender, EventArgs e)
