@@ -15,4 +15,5 @@
     <ShellContent Title="Delete" ContentTemplate="{DataTemplate local:DeletePage}" Route="DeletePage"/>
     <ShellContent Title="UpdateSub" ContentTemplate="{DataTemplate local:UpdateSubPage}" Route="UpdateSubPage"/>
     <ShellContent Title="StreamingPage" ContentTemplate="{DataTemplate local:StreamingPage}" Route="StreamingPage"/>
+    <ShellContent Title="StreamingSub" ContentTemplate="{DataTemplate local:StreamingSubPage}" Route="StreamingSubPage"/>
 </Shell>
