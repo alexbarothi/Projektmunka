@@ -17,7 +17,7 @@
             </Image>
 
             <Button 
-            Margin="290,25,5,0"
+            Margin="80,25,5,0"
             x:Name="getMoviesBtn"
             BackgroundColor="#8CCC60"
             Text="FILMEK.."
@@ -32,6 +32,17 @@
             x:Name="getRatingsBtn"
             BackgroundColor="#8CCC60" 
             Text="ÉRTÉKELÉSEK.."
+            IsEnabled="False"
+            FontFamily="Kimberley"
+            FontSize="20"
+            TextColor="White"
+            MinimumWidthRequest="200"/>
+
+            <Button 
+            Margin="5,25,5,0"
+            x:Name="getVotesBtn"
+            BackgroundColor="#8CCC60" 
+            Text="SZAVAZÁS.."
             IsEnabled="False"
             FontFamily="Kimberley"
             FontSize="20"

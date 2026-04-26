@@ -22,6 +22,7 @@ namespace CritiqlyNexusCore
             GetMovies();
             GetRatings();
             GetAdminData();
+            GetStreamingData();
         }
 
         public async void GetAdminData()
@@ -54,7 +55,7 @@ namespace CritiqlyNexusCore
             {
                 getMoviesBtn.BackgroundColor = Color.FromRgb(167, 255, 92);
                 getMoviesBtn.Text = "FILMEK ✓";
-                //getMoviesBtn.TextColor = Colors.Black;
+                getMoviesBtn.TextColor = Colors.Black;
 
                 foreach (var movie in movies)
                 {
@@ -78,7 +79,7 @@ namespace CritiqlyNexusCore
             {
                 getRatingsBtn.BackgroundColor = Color.FromRgb(167, 255, 92);
                 getRatingsBtn.Text = "ÉRTÉKELÉSEK ✓";
-                //getMoviesBtn.TextColor = Colors.Black;
+                getRatingsBtn.TextColor = Colors.Black;
 
                 foreach (var rating in ratings)
                 {
@@ -87,6 +88,27 @@ namespace CritiqlyNexusCore
 
                 FireUp();
             }
+        }
+
+        public async void GetStreamingData()
+        {
+            getVotesBtn.IsEnabled = false;
+            var streamingData = await GetAsync<StreamingVote>("http://127.0.0.1:8000/api/get-votes", "streamingVote");
+
+            AppData.streamingVotes.Clear();
+
+            if(streamingData.Count > 0)
+            {
+                getVotesBtn.BackgroundColor = Color.FromRgb(167, 255, 92);
+                getVotesBtn.Text = "SZAVAZÁS ✓";
+                getVotesBtn.TextColor = Colors.Black;
+                foreach (var data in streamingData)
+                {
+                    AppData.streamingVotes.Add(data);
+                }
+            }
+
+            FireUp();
         }
 
         public async Task<List<T>> GetAsync<T>(string url, string type)
@@ -139,11 +161,17 @@ namespace CritiqlyNexusCore
                 getRatingsBtn.Text = "ÉRTÉKELÉSEK ⨯";
                 getRatingsBtn.IsEnabled= true;
             }
+            else if (type == "streamingVote")
+            {
+                getVotesBtn.BackgroundColor = Color.FromRgb(105, 29, 12);
+                getVotesBtn.Text = "SZAVAZÁS ⨯";
+                getVotesBtn.IsEnabled = true;
+            }
         }
 
         public async void FireUp()
         {
-            if (AppData.Movies.Count > 0 && AppData.Ratings.Count > 0)
+            if (AppData.Movies.Count > 0 && AppData.Ratings.Count > 0 && AppData.streamingVotes.Count > 0)
             {
                 DailyMenuBtn.IsEnabled = true;
                 TrendingMenuBtn.IsEnabled = true;
