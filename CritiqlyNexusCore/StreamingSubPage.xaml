@@ -2,8 +2,31 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="CritiqlyNexusCore.StreamingSubPage"
+             Shell.NavBarIsVisible="False"
              Title="StreamingSubPage">
-    <VerticalStackLayout BackgroundColor="#2A2720">
+
+    <ContentPage.Resources>
+        <ControlTemplate x:Key="RadioButtonTemplate">
+            <Grid>
+                <Ellipse
+                    WidthRequest="22"
+                    HeightRequest="22"
+                    Stroke="#D4FF3E"
+                    StrokeThickness="3"
+                    Fill="Transparent" />
+
+                <Ellipse
+                    WidthRequest="10"
+                    HeightRequest="10"
+                    Fill="#D4FF3E"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    IsVisible="{TemplateBinding IsChecked}" />
+            </Grid>
+        </ControlTemplate>
+    </ContentPage.Resources>
+
+    <VerticalStackLayout>
 
         <HorizontalStackLayout 
             VerticalOptions="Fill" 
@@ -50,7 +73,6 @@
         </HorizontalStackLayout>
 
         <Grid
-            BackgroundColor="#2A2720"
             Padding="50,20,50,30"
             ColumnDefinitions="300,*"
             RowDefinitions="Auto">
@@ -62,28 +84,16 @@
                 StrokeThickness="5"
                 StrokeShape="RoundRectangle 10"
                 WidthRequest="250"
-                MaximumHeightRequest="550">
+                MaximumHeightRequest="400">
 
                 <Grid
-                    RowDefinitions="Auto,*"
+                    RowDefinitions="Auto"
                     BackgroundColor="#1C1A15">
 
                     <Image
                         x:Name="MoviePosterImage"
-                        WidthRequest="250"
+                        WidthRequest="260"
                         Grid.Row="0"/>
-
-                    <Label 
-                        x:Name="MovieTitleLabel"
-                        TextColor="White"
-                        Padding="10"
-                        FontFamily="Kimberley"
-                        FontSize="18"
-                        MaxLines="3"
-                        HorizontalOptions="Center"
-                        HorizontalTextAlignment="Center"
-                        MinimumHeightRequest="70"
-                        Grid.Row="1"/>
                 </Grid>
             </Border>
 
@@ -91,6 +101,13 @@
                 Grid.Column="1"
                 Margin="40,0,0,0"
                 Spacing="15">
+
+                <Label
+                    x:Name="MovieTitleLabel"
+                    FontSize="28"
+                    FontFamily="Kimberley"
+                    TextColor="#D4FF3E"
+                    Margin="0,0,0,5"/>
 
                 <Label
                     Text="Válaszd ki, hol érhető el ténylegesen a film:"
@@ -108,138 +125,124 @@
 
                     <VerticalStackLayout Spacing="15">
 
-                        <Grid ColumnDefinitions="Auto,*,Auto">
+                        <Grid ColumnDefinitions="Auto,*">
                             <RadioButton
                                 x:Name="NetflixRadioButton"
                                 Grid.Column="0"
                                 GroupName="StreamingPlatform"
                                 Value="Netflix"
-                                Color="#D4FF3E"
+                                ControlTemplate="{StaticResource RadioButtonTemplate}"
                                 VerticalOptions="Center" />
 
                             <Label
+                                x:Name="NetflixVotesLabel"
                                 Grid.Column="1"
-                                Text="Netflix"
+                                Text="Netflix - 0"
                                 FontFamily="Kimberley"
                                 FontSize="20"
                                 TextColor="White"
                                 VerticalOptions="Center"
                                 Margin="15,0,0,0"/>
-
-                            <Label
-                                x:Name="NetflixVotesLabel"
-                                Grid.Column="2"
-                                TextColor="#D4FF3E"
-                                FontFamily="Kimberley"
-                                FontSize="20"
-                                VerticalOptions="Center"/>
                         </Grid>
 
-                        <Grid ColumnDefinitions="Auto,*,Auto">
+                        <Grid ColumnDefinitions="Auto,*">
                             <RadioButton
                                 x:Name="HboRadioButton"
                                 Grid.Column="0"
                                 GroupName="StreamingPlatform"
                                 Value="Hbo"
+                                ControlTemplate="{StaticResource RadioButtonTemplate}"
                                 VerticalOptions="Center" />
 
                             <Label
+                                x:Name="HboVotesLabel"
                                 Grid.Column="1"
-                                Text="HBO Max"
+                                Text="HBO Max - 0"
                                 FontFamily="Kimberley"
                                 FontSize="20"
                                 TextColor="White"
                                 VerticalOptions="Center"
                                 Margin="15,0,0,0"/>
-
-                            <Label
-                                x:Name="HboVotesLabel"
-                                Grid.Column="2"
-                                TextColor="#D4FF3E"
-                                FontFamily="Kimberley"
-                                FontSize="20"
-                                VerticalOptions="Center"/>
                         </Grid>
 
-                        <Grid ColumnDefinitions="Auto,*,Auto">
+                        <Grid ColumnDefinitions="Auto,*">
                             <RadioButton
                                 x:Name="AmazonRadioButton"
                                 Grid.Column="0"
                                 GroupName="StreamingPlatform"
                                 Value="Amazon"
+                                ControlTemplate="{StaticResource RadioButtonTemplate}"
                                 VerticalOptions="Center" />
 
                             <Label
+                                x:Name="AmazonVotesLabel"
                                 Grid.Column="1"
-                                Text="Amazon Prime"
+                                Text="Amazon Prime - 0"
                                 FontFamily="Kimberley"
                                 FontSize="20"
                                 TextColor="White"
                                 VerticalOptions="Center"
                                 Margin="15,0,0,0"/>
-
-                            <Label
-                                x:Name="AmazonVotesLabel"
-                                Grid.Column="2"
-                                TextColor="#D4FF3E"
-                                FontFamily="Kimberley"
-                                FontSize="20"
-                                VerticalOptions="Center"/>
                         </Grid>
 
-                        <Grid ColumnDefinitions="Auto,*,Auto">
+                        <Grid ColumnDefinitions="Auto,*">
                             <RadioButton
                                 x:Name="DisneyRadioButton"
                                 Grid.Column="0"
                                 GroupName="StreamingPlatform"
                                 Value="Disney"
+                                ControlTemplate="{StaticResource RadioButtonTemplate}"
                                 VerticalOptions="Center" />
 
                             <Label
+                                x:Name="DisneyVotesLabel"
                                 Grid.Column="1"
-                                Text="Disney+"
+                                Text="Disney+ - 0"
                                 FontFamily="Kimberley"
                                 FontSize="20"
                                 TextColor="White"
                                 VerticalOptions="Center"
                                 Margin="15,0,0,0"/>
-
-                            <Label
-                                x:Name="DisneyVotesLabel"
-                                Grid.Column="2"
-                                TextColor="#D4FF3E"
-                                FontFamily="Kimberley"
-                                FontSize="20"
-                                VerticalOptions="Center"/>
                         </Grid>
 
-                        <Grid ColumnDefinitions="Auto,*,Auto">
+                        <Grid ColumnDefinitions="Auto,*">
                             <RadioButton
                                 x:Name="AppleRadioButton"
                                 Grid.Column="0"
                                 GroupName="StreamingPlatform"
                                 Value="Apple"
+                                ControlTemplate="{StaticResource RadioButtonTemplate}"
                                 VerticalOptions="Center" />
 
                             <Label
+                                x:Name="AppleVotesLabel"
                                 Grid.Column="1"
-                                Text="Apple TV+"
+                                Text="Apple TV+ - 0"
                                 FontFamily="Kimberley"
                                 FontSize="20"
                                 TextColor="White"
                                 VerticalOptions="Center"
                                 Margin="15,0,0,0"/>
-
-                            <Label
-                                x:Name="AppleVotesLabel"
-                                Grid.Column="2"
-                                TextColor="#D4FF3E"
-                                FontFamily="Kimberley"
-                                FontSize="20"
-                                VerticalOptions="Center"/>
                         </Grid>
 
                     </VerticalStackLayout>
+                </Border>
+
+                <Border
+                    BackgroundColor="#1C1A15"
+                    Stroke="#D4FF3E"
+                    StrokeThickness="4"
+                    StrokeShape="RoundRectangle 10">
+                        <Entry
+                            x:Name="StreamingLinkEntry"
+                            Placeholder="Streaming platform link..?"
+                            PlaceholderColor="#AAAAAA"
+                            TextColor="White"
+                            FontFamily="Kimberley"
+                            FontSize="18"
+                            BackgroundColor="#2A2720"
+                            HeightRequest="50"
+                            Keyboard="Url"/>
                 </Border>
 
                 <Label
@@ -247,7 +250,7 @@
                     FontSize="16"
                     FontFamily="Kimberley"
                     TextColor="White"
-                    Margin="0,15,0,0"/>
+                    Margin="0,10,0,0"/>
             </VerticalStackLayout>
         </Grid>
     </VerticalStackLayout>
