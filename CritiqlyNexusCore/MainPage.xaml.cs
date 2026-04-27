@@ -209,7 +209,7 @@ namespace CritiqlyNexusCore
 
         public async void OpenStreamingPage(Object sender, EventArgs e)
         {
-            await DisplayAlertAsync("INFO", "MUKODOM CSAK NEM JO VALAMI MAS", "OK");
+            //await DisplayAlertAsync("INFO", "MUKODOM CSAK NEM JO VALAMI MAS", "OK");
             await Shell.Current.GoToAsync("//StreamingPage");
         }
         public async void LogOut(Object sender, EventArgs e)

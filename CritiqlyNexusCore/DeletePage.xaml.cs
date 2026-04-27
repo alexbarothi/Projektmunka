@@ -72,7 +72,7 @@ public partial class DeletePage : ContentPage
 
         foreach (var movie in DeletedMovies)
         {
-            await DisplayAlertAsync("DEBUG", movie.title + ": " + movie.IsDeleted, "OK");
+            //await DisplayAlertAsync("DEBUG", movie.title + ": " + movie.IsDeleted, "OK");
             QueryMovies.Add(movie);
         }
         await Task.Delay(500);
