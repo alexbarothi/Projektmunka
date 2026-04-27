@@ -83,23 +83,24 @@
                     MinimumHeightRequest="50"/>
             </Border>
 
-            <Border
-                Grid.Row="2"
-                Grid.Column="0"
+            <Border Grid.Row="2" Grid.Column="0"
                 BackgroundColor="#3E3C38"
                 Stroke="#D4FF3E"
                 StrokeThickness="3"
                 StrokeShape="RoundRectangle 10">
-                <Label
-                    x:Name="LabelPlot"
-                    TextColor="White"
-                    Padding="20"
-                    FontFamily="Kimberley"
-                    FontSize="15"
-                    MaxLines="10"
-                    HorizontalOptions="Center"
-                    VerticalOptions="Center"
-                    MinimumHeightRequest="150"/>
+
+                <ScrollView HeightRequest="150">
+
+                    <Label
+                        x:Name="LabelPlot"
+                        TextColor="White"
+                        Padding="20"
+                        FontFamily="Kimberley"
+                        FontSize="15"
+                        LineBreakMode="WordWrap"/>
+
+                </ScrollView>
+
             </Border>
 
             <Border
@@ -221,15 +222,18 @@
                 Stroke="#D4FF3E"
                 StrokeThickness="3"
                 StrokeShape="RoundRectangle 10">
-                <Entry
+
+                <Editor
                     Placeholder="Új leírás?"
                     FontFamily="Kimberley"
                     TextColor="White"
                     PlaceholderColor="#828282"
                     BackgroundColor="#3E3C38"
-                    VerticalTextAlignment="Center"
-                    HorizontalTextAlignment="Start"
+                    HeightRequest="150"
+                    AutoSize="Disabled"
+                    VerticalOptions="FillAndExpand"
                     x:Name="EntryPlot"/>
+
             </Border>
 
             <Border
