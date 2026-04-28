@@ -37,7 +37,7 @@ namespace CritiqlyNexusCore
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
-                    fonts.AddFont("KimberleyBL-Regular 900", "Kimberley");
+                    fonts.AddFont("KimberleyBlRegular", "Kimberley");
                 });
 
 #if DEBUG
