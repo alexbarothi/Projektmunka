@@ -28,3 +28,7 @@ An Admin Interface for the Critiqly website
 
 ##### The system is built to simplify content management and ensure that the platform stays up-to-date with minimal effort.
 
+
+
+The website project can be found here: https://github.com/bagonyidori/Projektmunka
+
