@@ -17,8 +17,6 @@ public partial class StreamingPage : ContentPage
     {
         base.OnAppearing();
 
-        StatusLabel.Text = "Válassz ki egy hitelesítésre váró filmet!";
-
         CheckQueue(this, EventArgs.Empty);
     }
 
@@ -42,7 +40,7 @@ public partial class StreamingPage : ContentPage
 
         foreach (StreamingVote data in AppData.streamingVotes)
         {
-            if (data.Netflix >= 30 || data.Hbo >= 30 || data.Amazon >= 30 || data.Disney >= 30 || data.Apple >= 30 && data.VerifiedPlatform == null)
+            if ((data.Netflix >= 30 || data.Hbo >= 30 || data.Amazon >= 30 || data.Disney >= 30 || data.Apple >= 30) && data.VerifiedPlatform == null)
             {
                 tempIdList.Add(data.MovieId);
             }
@@ -54,6 +52,15 @@ public partial class StreamingPage : ContentPage
             {
                 QueryMovies.Add(movie);
             }
+        }
+
+        if(QueryMovies.Count != 0)
+        {
+            StatusLabel.Text = "Válassz ki egy hitelesítésre váró filmet!";
+        }
+        else
+        {
+            StatusLabel.Text = "Jelenleg nincs hitelesítésre váró film!";
         }
 
         tempIdList.Clear();

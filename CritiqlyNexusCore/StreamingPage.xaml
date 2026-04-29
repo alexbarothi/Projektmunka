@@ -64,7 +64,7 @@
                 HorizontalOptions="Center" />
 
             <Button 
-                Margin="500,20,5,0"
+                Margin="700,20,5,0"
                 Clicked="Exit"
                 x:Name="exitBtn"
                 BackgroundColor="OrangeRed" 
@@ -83,21 +83,12 @@
                 FontSize="25"
                 FontFamily="Kimberley"
                 TextColor="White"
-                Margin="50,30,0,0" />
+                Margin="50,30,0,30" />
         </HorizontalStackLayout>
 
         <HorizontalStackLayout
             VerticalOptions="Fill" 
             BackgroundColor="#2A2720">
-
-            <Button
-                Text="⛝ Hitelesítésre Váró Filmek Megtekintése"
-                Clicked="CheckQueue"
-                x:Name="checkQueveBtn"
-                FontFamily="Kimberley"
-                FontSize="20"
-                BackgroundColor="#D4FF3E"
-                Margin="15,30,0,20" />
         </HorizontalStackLayout>
 
         <CollectionView 

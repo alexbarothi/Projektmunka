@@ -39,22 +39,27 @@ public partial class StreamingSubPage : ContentPage
         if (NetflixRadioButton.IsChecked)
         {
             AppData.StreamingPageSelectedToVerify.VerifiedPlatform = "netflix";
+            AppData.streamingVotes.First(x => x.MovieId == AppData.StreamingPageSelectedMovie.id).VerifiedPlatform = "netflix";
         }
         else if (HboRadioButton.IsChecked)
         {
             AppData.StreamingPageSelectedToVerify.VerifiedPlatform = "hbo";
+            AppData.streamingVotes.First(x => x.MovieId == AppData.StreamingPageSelectedMovie.id).VerifiedPlatform = "hbo";
         }
         else if (AmazonRadioButton.IsChecked)
         {
             AppData.StreamingPageSelectedToVerify.VerifiedPlatform = "amazon";
+            AppData.streamingVotes.First(x => x.MovieId == AppData.StreamingPageSelectedMovie.id).VerifiedPlatform = "amazon";
         }
         else if (AppleRadioButton.IsChecked)
         {
             AppData.StreamingPageSelectedToVerify.VerifiedPlatform = "apple";
+            AppData.streamingVotes.First(x => x.MovieId == AppData.StreamingPageSelectedMovie.id).VerifiedPlatform = "apple";
         }
         else if (DisneyRadioButton.IsChecked)
         {
             AppData.StreamingPageSelectedToVerify.VerifiedPlatform = "disney";
+            AppData.streamingVotes.First(x => x.MovieId == AppData.StreamingPageSelectedMovie.id).VerifiedPlatform = "disney";
         }
 
         var verifyData = new
